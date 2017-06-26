@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Evaluation" max_length="40" name="x_inthe_eval_evaluation" type="collection">
+        <element label="Administrator" max_length="32" name="administrator" read_only="true" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element label="Architect" max_length="32" name="architect" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element label="Description" max_length="2000" name="description" type="string"/>
+        <element label="Evaluators" max_length="4000" name="evaluators" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="glide_list"/>
+        <element display="true" label="Name" mandatory="true" max_length="140" name="name" type="string"/>
+        <element default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="PMO Project" max_length="32" name="pmo_project" reference="pm_project" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element label="Solutions Manager" max_length="32" name="solutions_manager" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element choice="3" default="new" label="State" max_length="40" name="state" type="choice">
+            <choice>
+                <element label="New" sequence="0" value="new"/>
+                <element label="In Progress" sequence="1" value="in_progress"/>
+                <element label="Scoring" sequence="2" value="scoring"/>
+                <element label="Complete" sequence="3" value="complete"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="administrator"/>
+        </index>
+        <index name="index2">
+            <element name="pmo_project"/>
+        </index>
+        <index name="index3">
+            <element name="architect"/>
+        </index>
+        <index name="index4">
+            <element name="solutions_manager"/>
+        </index>
+    </element>
+</database>
