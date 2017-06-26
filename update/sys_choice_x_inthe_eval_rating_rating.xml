@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="rating" table="x_inthe_eval_rating" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>rating</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Fully Meets</label>
+            <language>en</language>
+            <name>x_inthe_eval_rating</name>
+            <sequence>10</sequence>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 18:17:31</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c6dfaede4f233240f5f3d49f0310c7fc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 18:17:31</sys_updated_on>
+            <u_task/>
+            <value>fully_meets</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>rating</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Partially Meets</label>
+            <language>en</language>
+            <name>x_inthe_eval_rating</name>
+            <sequence>20</sequence>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 18:17:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d9ff2ade4f233240f5f3d49f0310c743</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 18:18:08</sys_updated_on>
+            <u_task/>
+            <value>partially_meets</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>rating</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Does Not Meet</label>
+            <language>en</language>
+            <name>x_inthe_eval_rating</name>
+            <sequence>30</sequence>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 18:17:55</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>66ffea9e4f233240f5f3d49f0310c791</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 18:18:04</sys_updated_on>
+            <u_task/>
+            <value>does_not_meet</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>rating</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Unable to Rate</label>
+            <language>en</language>
+            <name>x_inthe_eval_rating</name>
+            <sequence>40</sequence>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 18:18:13</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>b200bade4f233240f5f3d49f0310c7f7</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 18:18:18</sys_updated_on>
+            <u_task/>
+            <value>unable_to_rate</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>rating</element>
+            <name>x_inthe_eval_rating</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 18:17:31</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>3cffea9e4f233240f5f3d49f0310c78f</sys_id>
+            <sys_mod_count>11</sys_mod_count>
+            <sys_name>rating</sys_name>
+            <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
+            <sys_update_name>sys_choice_x_inthe_eval_rating_rating</sys_update_name>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 18:18:18</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

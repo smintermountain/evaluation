@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="state" table="x_inthe_eval_solution" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Draft</label>
+            <language>en</language>
+            <name>x_inthe_eval_solution</name>
+            <sequence>0</sequence>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 18:01:17</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>f13cae9a4f233240f5f3d49f0310c75b</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 18:01:21</sys_updated_on>
+            <u_task/>
+            <value>draft</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>In Progress</label>
+            <language>en</language>
+            <name>x_inthe_eval_solution</name>
+            <sequence>1</sequence>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 18:01:32</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>033c6e9a4f233240f5f3d49f0310c7a6</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 18:01:37</sys_updated_on>
+            <u_task/>
+            <value>in_progress</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Final</label>
+            <language>en</language>
+            <name>x_inthe_eval_solution</name>
+            <sequence>2</sequence>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 18:01:41</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>724cae9a4f233240f5f3d49f0310c75c</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 18:01:44</sys_updated_on>
+            <u_task/>
+            <value>final</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Complete</label>
+            <language>en</language>
+            <name>x_inthe_eval_solution</name>
+            <sequence>3</sequence>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 18:01:49</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>4d5c26da4f233240f5f3d49f0310c75c</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 18:01:52</sys_updated_on>
+            <u_task/>
+            <value>complete</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>state</element>
+            <name>x_inthe_eval_solution</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 18:01:17</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>473cae9a4f233240f5f3d49f0310c7a0</sys_id>
+            <sys_mod_count>12</sys_mod_count>
+            <sys_name>state</sys_name>
+            <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
+            <sys_update_name>sys_choice_x_inthe_eval_solution_state</sys_update_name>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 18:01:52</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

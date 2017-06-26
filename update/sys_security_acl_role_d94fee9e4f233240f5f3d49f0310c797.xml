@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>awyoung</sys_created_by>
+        <sys_created_on>2017-06-26 18:14:32</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>d94fee9e4f233240f5f3d49f0310c797</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_inthe_eval_rating.x_inthe_eval_rating_user</sys_name>
+        <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
+        <sys_security_acl display_value="x_inthe_eval_rating">554fee9e4f233240f5f3d49f0310c795</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_d94fee9e4f233240f5f3d49f0310c797</sys_update_name>
+        <sys_updated_by>awyoung</sys_updated_by>
+        <sys_updated_on>2017-06-26 18:14:32</sys_updated_on>
+        <sys_user_role display_value="x_inthe_eval_rating_user" name="x_inthe_eval_rating_user">9c4fae9e4f233240f5f3d49f0310c77c</sys_user_role>
+        <transaction_id/>
+    </sys_security_acl_role>
+</record_update>

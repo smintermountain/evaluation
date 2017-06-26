@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Solution" max_length="40" name="x_inthe_eval_solution" type="collection">
+        <element label="Description" max_length="2000" name="description" type="string"/>
+        <element label="Documentation" max_length="8000" name="documentation" type="html"/>
+        <element label="Evaluation" max_length="32" name="evaluation" reference="x_inthe_eval_evaluation" reference_qual="stateINnew,in_progress^EQ" reference_qual_condition="stateINnew,in_progress^EQ" type="reference"/>
+        <element default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Primary Contact" max_length="32" name="primary_contact" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element display="true" label="Solution" mandatory="true" max_length="140" name="solution" type="string"/>
+        <element choice="3" default="draft" label="State" max_length="40" name="state" type="choice">
+            <choice>
+                <element label="Draft" sequence="0" value="draft"/>
+                <element label="In Progress" sequence="1" value="in_progress"/>
+                <element label="Final" sequence="2" value="final"/>
+                <element label="Complete" sequence="3" value="complete"/>
+            </choice>
+        </element>
+        <element label="Vendor" max_length="250" name="vendor" type="string"/>
+        <index name="index">
+            <element name="evaluation"/>
+        </index>
+        <index name="index2">
+            <element name="primary_contact"/>
+        </index>
+    </element>
+</database>

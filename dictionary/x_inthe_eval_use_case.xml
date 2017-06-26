@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Use Case" max_length="40" name="x_inthe_eval_use_case" type="collection">
+        <element label="Description" max_length="2000" name="description" type="string"/>
+        <element label="Evaluation" max_length="32" name="evaluation" reference="x_inthe_eval_evaluation" reference_qual="stateINnew,in_progress^EQ" reference_qual_condition="stateINnew,in_progress^EQ" type="reference"/>
+        <element label="Evaluators" max_length="4000" name="evaluators" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="glide_list"/>
+        <element label="Focus Area" max_length="32" name="focus_area" reference="x_inthe_eval_focus_area" type="reference"/>
+        <element display="true" label="Name" mandatory="true" max_length="140" name="name" type="string"/>
+        <element default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element choice="3" default="new" label="State" max_length="40" name="state" type="choice">
+            <choice>
+                <element label="New" sequence="0" value="new"/>
+                <element label="In Progress" sequence="1" value="in_progress"/>
+                <element label="Final" sequence="2" value="final"/>
+                <element label="Scoring" sequence="3" value="scoring"/>
+                <element label="Complete" sequence="4" value="complete"/>
+            </choice>
+        </element>
+        <element label="Use Case Leader" max_length="32" name="use_case_leader" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <index name="index">
+            <element name="evaluation"/>
+        </index>
+        <index name="index2">
+            <element name="focus_area"/>
+        </index>
+        <index name="index3">
+            <element name="use_case_leader"/>
+        </index>
+    </element>
+</database>
