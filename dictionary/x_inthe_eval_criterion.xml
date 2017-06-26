@@ -11,9 +11,9 @@
         </element>
         <element label="Description" max_length="2000" name="description" type="string"/>
         <element label="Documentation" max_length="8000" name="documentation" type="html"/>
-        <element label="Evaluation" max_length="32" name="evaluation" reference="x_inthe_eval_evaluation" reference_qual="stateINnew,in_progress^EQ" reference_qual_condition="stateINnew,in_progress^EQ" type="reference"/>
+        <element label="Evaluation" max_length="32" name="evaluation" read_only="true" reference="x_inthe_eval_evaluation" reference_qual="stateINnew,in_progress^EQ" reference_qual_condition="stateINnew,in_progress^EQ" type="reference"/>
         <element label="Focus Area" max_length="32" name="focus_area" reference="x_inthe_eval_focus_area" reference_qual="evaluationSAMEASevaluation^EQ" reference_qual_condition="evaluationSAMEASevaluation^EQ" type="reference"/>
-        <element default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" read_only="true" type="string"/>
         <element choice="3" default="in_progress" label="State" max_length="40" name="state" type="choice">
             <choice>
                 <element label="In Progress" sequence="20" value="in_progress"/>
@@ -22,7 +22,7 @@
                 <element label="Complete" sequence="50" value="complete"/>
             </choice>
         </element>
-        <element label="Use Case" max_length="32" name="use_case" reference="x_inthe_eval_use_case" reference_qual="stateINnew,in_progress^EQ" reference_qual_condition="stateINnew,in_progress^EQ" type="reference"/>
+        <element label="Use Case" max_length="32" name="use_case" read_only="true" reference="x_inthe_eval_use_case" reference_qual="stateINnew,in_progress^EQ" reference_qual_condition="stateINnew,in_progress^EQ" type="reference"/>
         <index name="index">
             <element name="evaluation"/>
         </index>

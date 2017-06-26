@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_section caption="New Section" section_id="b25c47d24fa33240f5f3d49f0310c7ea" sys_domain="global" table="x_inthe_eval_use_case" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>0</position>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 20:21:38</sys_created_on>
+            <sys_id>4b5c47d24fa33240f5f3d49f0310c7ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="New Section" display_value="New Section" name="x_inthe_eval_use_case" sys_domain="global" view="Default view">b25c47d24fa33240f5f3d49f0310c7ea</sys_ui_section>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 20:21:38</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>1</position>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 20:21:38</sys_created_on>
+            <sys_id>cb5c47d24fa33240f5f3d49f0310c7ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="New Section" display_value="New Section" name="x_inthe_eval_use_case" sys_domain="global" view="Default view">b25c47d24fa33240f5f3d49f0310c7ea</sys_ui_section>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 20:21:38</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>number</element>
+            <position>2</position>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 20:21:38</sys_created_on>
+            <sys_id>4f5c47d24fa33240f5f3d49f0310c7ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="New Section" display_value="New Section" name="x_inthe_eval_use_case" sys_domain="global" view="Default view">b25c47d24fa33240f5f3d49f0310c7ea</sys_ui_section>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 20:21:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>description</element>
+            <position>3</position>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 20:21:38</sys_created_on>
+            <sys_id>cf5c47d24fa33240f5f3d49f0310c7ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="New Section" display_value="New Section" name="x_inthe_eval_use_case" sys_domain="global" view="Default view">b25c47d24fa33240f5f3d49f0310c7ea</sys_ui_section>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 20:21:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>evaluation</element>
+            <position>4</position>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 20:21:38</sys_created_on>
+            <sys_id>435c47d24fa33240f5f3d49f0310c7eb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="New Section" display_value="New Section" name="x_inthe_eval_use_case" sys_domain="global" view="Default view">b25c47d24fa33240f5f3d49f0310c7ea</sys_ui_section>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 20:21:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>evaluators</element>
+            <position>5</position>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 20:21:38</sys_created_on>
+            <sys_id>c35c47d24fa33240f5f3d49f0310c7eb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="New Section" display_value="New Section" name="x_inthe_eval_use_case" sys_domain="global" view="Default view">b25c47d24fa33240f5f3d49f0310c7ea</sys_ui_section>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 20:21:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>name</element>
+            <position>6</position>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 20:21:38</sys_created_on>
+            <sys_id>475c47d24fa33240f5f3d49f0310c7eb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="New Section" display_value="New Section" name="x_inthe_eval_use_case" sys_domain="global" view="Default view">b25c47d24fa33240f5f3d49f0310c7ea</sys_ui_section>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 20:21:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.begin_split</element>
+            <position>7</position>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 20:21:38</sys_created_on>
+            <sys_id>c75c47d24fa33240f5f3d49f0310c7eb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="New Section" display_value="New Section" name="x_inthe_eval_use_case" sys_domain="global" view="Default view">b25c47d24fa33240f5f3d49f0310c7ea</sys_ui_section>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 20:21:38</sys_updated_on>
+            <sys_user/>
+            <type>.begin_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>focus_area</element>
+            <position>8</position>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 20:21:38</sys_created_on>
+            <sys_id>4b5c47d24fa33240f5f3d49f0310c7eb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="New Section" display_value="New Section" name="x_inthe_eval_use_case" sys_domain="global" view="Default view">b25c47d24fa33240f5f3d49f0310c7ea</sys_ui_section>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 20:21:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>use_case_leader</element>
+            <position>9</position>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 20:21:38</sys_created_on>
+            <sys_id>cb5c47d24fa33240f5f3d49f0310c7eb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="New Section" display_value="New Section" name="x_inthe_eval_use_case" sys_domain="global" view="Default view">b25c47d24fa33240f5f3d49f0310c7ea</sys_ui_section>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 20:21:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>10</position>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 20:21:38</sys_created_on>
+            <sys_id>4f5c47d24fa33240f5f3d49f0310c7eb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="New Section" display_value="New Section" name="x_inthe_eval_use_case" sys_domain="global" view="Default view">b25c47d24fa33240f5f3d49f0310c7ea</sys_ui_section>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 20:21:38</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>state</element>
+            <position>11</position>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 20:21:38</sys_created_on>
+            <sys_id>cf5c47d24fa33240f5f3d49f0310c7eb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="New Section" display_value="New Section" name="x_inthe_eval_use_case" sys_domain="global" view="Default view">b25c47d24fa33240f5f3d49f0310c7ea</sys_ui_section>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 20:21:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption>New Section</caption>
+            <header>false</header>
+            <name>x_inthe_eval_use_case</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-26 20:21:38</sys_created_on>
+            <sys_customer_update>true</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>b25c47d24fa33240f5f3d49f0310c7ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>New Section</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
+            <sys_update_name>sys_ui_section_b25c47d24fa33240f5f3d49f0310c7ea</sys_update_name>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-26 20:21:38</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

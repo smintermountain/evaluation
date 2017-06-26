@@ -3,7 +3,7 @@
     <element label="Rating" max_length="40" name="x_inthe_eval_rating" type="collection">
         <element display="true" label="Criterion" max_length="32" name="criterion" reference="x_inthe_eval_criterion" type="reference"/>
         <element label="Evaluator" max_length="32" name="evaluator" reference="sys_user" type="reference"/>
-        <element default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" read_only="true" type="string"/>
         <element choice="1" label="Rating" mandatory="true" max_length="40" name="rating" type="choice">
             <choice>
                 <element label="Fully Meets" sequence="10" value="fully_meets"/>
