@@ -8,7 +8,7 @@
         <field>sys_created_on</field>
         <global>true</global>
         <messages/>
-        <name>SET - Hide states</name>
+        <name>SET Use Case - Hide states</name>
         <order/>
         <script><![CDATA[function onLoad() {
 	if (g_form.getValue('state') != 'scoring'){
@@ -28,8 +28,8 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>e15c67264f2f3240f5f3d49f0310c777</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>SET - Hide states</sys_name>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>SET Use Case - Hide states</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
@@ -37,7 +37,7 @@
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_script_client_e15c67264f2f3240f5f3d49f0310c777</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-06-27 17:20:43</sys_updated_on>
+        <sys_updated_on>2017-06-27 18:32:28</sys_updated_on>
         <table>x_inthe_eval_use_case</table>
         <type>onLoad</type>
         <ui_type>10</ui_type>

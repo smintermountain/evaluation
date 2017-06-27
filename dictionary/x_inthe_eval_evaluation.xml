@@ -11,10 +11,11 @@
         <element label="Solutions Manager" max_length="32" name="solutions_manager" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
         <element choice="3" default="new" label="State" max_length="40" name="state" type="choice">
             <choice>
-                <element label="New" sequence="0" value="new"/>
-                <element label="In Progress" sequence="1" value="in_progress"/>
-                <element label="Scoring" sequence="2" value="scoring"/>
-                <element label="Complete" sequence="3" value="complete"/>
+                <element label="New" sequence="10" value="new"/>
+                <element label="In Progress" sequence="20" value="in_progress"/>
+                <element label="Final" sequence="30" value="final"/>
+                <element label="Scoring" sequence="40" value="scoring"/>
+                <element label="Complete" sequence="50" value="complete"/>
             </choice>
         </element>
         <index name="index">

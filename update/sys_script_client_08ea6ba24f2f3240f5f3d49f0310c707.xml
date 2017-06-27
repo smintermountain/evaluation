@@ -8,7 +8,7 @@
         <field>sys_created_on</field>
         <global>true</global>
         <messages/>
-        <name>SET - User Instructions</name>
+        <name>SET Score Card - User Instructions</name>
         <order/>
         <script><![CDATA[function onLoad() {
    //Gives the user an explanation of how to use the form and/or make it editable.
@@ -16,11 +16,11 @@
 	if(state == 'in_progress'||state == 'new'){
 	g_form.addInfoMessage("Please use the list below to mark your ratings for this solution. When all your ratings have been marked, change the state to Final and save.");
 	}
-	else if(state =='complete'){
+	if(state =='complete'){
 		g_form.addErrorMessage("You cannot edit this Score Card because it is marked as "+ state + ".");
 	}
-	else if(state =='final'){
-		g_form.addInfoMessage("You cannot edit this Score Card because it is marked as "+ state + ". To unlock, you must change the state to In Progress and save.");
+	if(state =='final'){
+		g_form.addInfoMessage("As your scores are changed, they will be marked as final and locked. To change final scores, you must change the score card's state to In Progress and save.");
 	} 
 }]]></script>
         <sys_class_name>sys_script_client</sys_class_name>
@@ -30,8 +30,8 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>08ea6ba24f2f3240f5f3d49f0310c707</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>SET - User Instructions</sys_name>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>SET Score Card - User Instructions</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
@@ -39,7 +39,7 @@
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_script_client_08ea6ba24f2f3240f5f3d49f0310c707</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-06-27 17:15:00</sys_updated_on>
+        <sys_updated_on>2017-06-27 19:08:55</sys_updated_on>
         <table>x_inthe_eval_score_card</table>
         <type>onLoad</type>
         <ui_type>10</ui_type>

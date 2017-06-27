@@ -8,13 +8,16 @@
         <field>sys_created_on</field>
         <global>true</global>
         <messages/>
-        <name>SET - User Instructions</name>
+        <name>SET Use Case - User Instructions</name>
         <order/>
         <script><![CDATA[function onLoad() {
 	var state = g_form.getValue('state');
-	if(state=='new'||state=='in_progress'){	
-		g_form.addInfoMessage("Criteria can be created and updated until this Use Case is finalized by the Use Case Leader. ");
-	}  
+	if(state=='final'){
+		g_form.addInfoMessage("You cannot edit this Use Case because it is marked as "+ state + ". To unlock, you must change the state to In Progress.");
+	}
+	if(state=='complete'||state=='scoring'){
+		g_form.addErrorMessage("You cannot edit this Use Case because it is marked as "+ state + ".");
+	}
 }]]></script>
         <sys_class_name>sys_script_client</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
@@ -23,8 +26,8 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>fe9c2b264f2f3240f5f3d49f0310c798</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>SET - User Instructions</sys_name>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>SET Use Case - User Instructions</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
@@ -32,7 +35,7 @@
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_script_client_fe9c2b264f2f3240f5f3d49f0310c798</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-06-27 17:23:42</sys_updated_on>
+        <sys_updated_on>2017-06-27 18:50:42</sys_updated_on>
         <table>x_inthe_eval_use_case</table>
         <type>onLoad</type>
         <ui_type>10</ui_type>

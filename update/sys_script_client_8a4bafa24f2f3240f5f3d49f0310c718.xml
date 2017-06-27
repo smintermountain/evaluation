@@ -8,12 +8,12 @@
         <field>sys_created_on</field>
         <global>true</global>
         <messages/>
-        <name>SET - User Instructions</name>
+        <name>SET Solution - User Instructions</name>
         <order/>
         <script><![CDATA[function onLoad() {
    var state = g_form.getValue('state');
 	if(state ==  'final'){
-		g_form.addErrorMessage("You cannot edit this Solution because it is marked as " + state + ". To unlock, you must change the State to Draft and save.");
+		g_form.addInfoMessage("You cannot edit this Solution because it is marked as " + state + ". To unlock, you must change the State to In Progress and save.");
 	}
 	if(g_form.getValue('state') == 'complete'){
 		g_form.addErrorMessage("You cannot edit this Solution because it is marked as " + state + ".");
@@ -26,8 +26,8 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>8a4bafa24f2f3240f5f3d49f0310c718</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>SET - User Instructions</sys_name>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>SET Solution - User Instructions</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
@@ -35,7 +35,7 @@
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_script_client_8a4bafa24f2f3240f5f3d49f0310c718</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-06-27 17:16:42</sys_updated_on>
+        <sys_updated_on>2017-06-27 18:47:19</sys_updated_on>
         <table>x_inthe_eval_solution</table>
         <type>onLoad</type>
         <ui_type>10</ui_type>
