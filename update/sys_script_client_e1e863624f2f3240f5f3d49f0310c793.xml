@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>sys_created_on</field>
+        <global>true</global>
+        <messages/>
+        <name>SET - Hide States</name>
+        <order/>
+        <script><![CDATA[// Hide "Complete" state when not the current state
+function onLoad() {
+	var state = g_form.getValue('state');
+      if (state != 'complete'){
+		  g_form.removeOption('state', 'complete');
+	  }
+// Hide "scoring" state when not the current state
+	else if(state != 'scoring'){
+		g_form.removeOption('state', 'scoring');
+	}
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>awyoung</sys_created_by>
+        <sys_created_on>2017-06-27 17:05:58</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>e1e863624f2f3240f5f3d49f0310c793</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>SET - Hide States</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
+        <sys_update_name>sys_script_client_e1e863624f2f3240f5f3d49f0310c793</sys_update_name>
+        <sys_updated_by>awyoung</sys_updated_by>
+        <sys_updated_on>2017-06-27 17:05:58</sys_updated_on>
+        <table>x_inthe_eval_criterion</table>
+        <type>onLoad</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>
