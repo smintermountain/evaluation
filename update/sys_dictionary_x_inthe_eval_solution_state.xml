@@ -51,7 +51,7 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-26 18:01:01</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>1f1c62da4f233240f5f3d49f0310c70a</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>State</sys_name>

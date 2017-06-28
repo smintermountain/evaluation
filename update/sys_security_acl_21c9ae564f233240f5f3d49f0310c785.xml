@@ -12,7 +12,7 @@
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-26 17:50:32</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>21c9ae564f233240f5f3d49f0310c785</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_inthe_eval_focus_area</sys_name>

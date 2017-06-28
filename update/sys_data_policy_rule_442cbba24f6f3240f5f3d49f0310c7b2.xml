@@ -7,7 +7,7 @@
         <sys_class_name>sys_data_policy_rule</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-27 18:28:54</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_data_policy display_value="SET Use Case - Read only when final/scoring/complete">cfb577ae4f2f3240f5f3d49f0310c7a3</sys_data_policy>
         <sys_id>442cbba24f6f3240f5f3d49f0310c7b2</sys_id>
         <sys_mod_count>0</sys_mod_count>

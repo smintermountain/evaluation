@@ -7,7 +7,7 @@
         <sys_class_name>sys_data_policy_rule</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-27 17:29:59</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_data_policy display_value="SET Evaluation - Read only when scoring/complete">8a7e27e64f2f3240f5f3d49f0310c7f7</sys_data_policy>
         <sys_id>38aee7e64f2f3240f5f3d49f0310c774</sys_id>
         <sys_mod_count>0</sys_mod_count>

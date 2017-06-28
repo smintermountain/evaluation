@@ -17,7 +17,7 @@
         <sys_class_name>sys_data_policy2</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-27 18:29:21</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>844c3ba24f6f3240f5f3d49f0310c78a</sys_id>

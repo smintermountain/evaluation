@@ -51,7 +51,7 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-26 17:57:51</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>2c7bea1a4f233240f5f3d49f0310c7a8</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_inthe_eval_solution</sys_name>

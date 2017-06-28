@@ -21,7 +21,7 @@
         <sys_class_name>sys_db_object</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-26 17:50:29</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>ada96e564f233240f5f3d49f0310c77b</sys_id>
         <sys_mod_count>1</sys_mod_count>
         <sys_name>Focus Area</sys_name>

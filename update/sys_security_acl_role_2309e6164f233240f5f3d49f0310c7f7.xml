@@ -4,7 +4,7 @@
         <sys_class_name>sys_security_acl_role</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-26 17:47:23</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>2309e6164f233240f5f3d49f0310c7f7</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_inthe_eval_use_case.x_inthe_eval_use_case_user</sys_name>

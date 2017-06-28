@@ -6,6 +6,26 @@
             <element>state</element>
             <hint/>
             <inactive>false</inactive>
+            <label>New</label>
+            <language>en</language>
+            <name>x_inthe_eval_criterion</name>
+            <sequence>10</sequence>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-06-28 17:49:00</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>6b8cf4434f6f3e40af76d0af0310c7a6</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-06-28 17:49:00</sys_updated_on>
+            <u_task/>
+            <value>new</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
             <label>In Progress</label>
             <language>en</language>
             <name>x_inthe_eval_criterion</name>
@@ -89,7 +109,7 @@
             <sys_created_on>2017-06-26 18:08:46</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
             <sys_id>6cfdea1e4f233240f5f3d49f0310c785</sys_id>
-            <sys_mod_count>13</sys_mod_count>
+            <sys_mod_count>14</sys_mod_count>
             <sys_name>state</sys_name>
             <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
             <sys_policy/>
@@ -97,7 +117,7 @@
             <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
             <sys_update_name>sys_choice_x_inthe_eval_criterion_state</sys_update_name>
             <sys_updated_by>awyoung</sys_updated_by>
-            <sys_updated_on>2017-06-26 18:09:17</sys_updated_on>
+            <sys_updated_on>2017-06-28 17:49:00</sys_updated_on>
         </sys_choice_set>
     </sys_choice>
 </record_update>

@@ -93,7 +93,7 @@
             <sys_class_name>sys_ui_section</sys_class_name>
             <sys_created_by>awyoung</sys_created_by>
             <sys_created_on>2017-06-26 20:19:22</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>25db0f924fa33240f5f3d49f0310c77d</sys_id>

@@ -24,7 +24,7 @@
         <sys_class_name>sys_script_client</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-27 17:20:43</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>e15c67264f2f3240f5f3d49f0310c777</sys_id>
