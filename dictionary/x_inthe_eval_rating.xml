@@ -14,9 +14,8 @@
         </element>
         <element label="Score Card" max_length="32" name="score_card" reference="x_inthe_eval_score_card" type="reference"/>
         <element label="Solution" max_length="32" name="solution" reference="x_inthe_eval_solution" type="reference"/>
-        <element choice="3" default="new" label="State" max_length="40" name="state" type="choice">
+        <element choice="3" default="in_progress" label="State" max_length="40" name="state" type="choice">
             <choice>
-                <element label="New" sequence="10" value="new"/>
                 <element label="In Progress" sequence="20" value="in_progress"/>
                 <element label="Final" sequence="30" value="final"/>
                 <element label="Complete" sequence="40" value="complete"/>

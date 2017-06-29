@@ -8,7 +8,7 @@
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-27 17:26:30</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_data_policy display_value="SET Criterion - Read only when scoring/final">ea5d63a64f2f3240f5f3d49f0310c727</sys_data_policy>
+        <sys_data_policy display_value="SET Criterion - Read only when final">ea5d63a64f2f3240f5f3d49f0310c727</sys_data_policy>
         <sys_id>11ddeba64f2f3240f5f3d49f0310c72b</sys_id>
         <sys_mod_count>1</sys_mod_count>
         <sys_name>description</sys_name>
