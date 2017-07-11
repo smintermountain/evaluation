@@ -12,16 +12,16 @@
         <inherit>false</inherit>
         <model_id/>
         <model_table>x_inthe_eval_score_card</model_table>
-        <reverse_if_false>true</reverse_if_false>
+        <reverse_if_false>false</reverse_if_false>
         <short_description>SET Score Card - Read only when complete</short_description>
         <sys_class_name>sys_data_policy2</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-27 17:35:31</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>1bef6b2a4f2f3240f5f3d49f0310c7cd</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>SET Score Card - Read only when complete</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -30,6 +30,6 @@
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_data_policy2_1bef6b2a4f2f3240f5f3d49f0310c7cd</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-06-27 17:48:37</sys_updated_on>
+        <sys_updated_on>2017-07-11 16:55:57</sys_updated_on>
     </sys_data_policy2>
 </record_update>

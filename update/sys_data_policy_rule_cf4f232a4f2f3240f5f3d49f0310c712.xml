@@ -8,7 +8,7 @@
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-27 17:32:53</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_data_policy display_value="SET Focus Area - Read only when parent is scoring/complete">1b2fafe64f2f3240f5f3d49f0310c7c4</sys_data_policy>
+        <sys_data_policy display_value="SET Focus Area - Read only when parent is final/scoring/complete">1b2fafe64f2f3240f5f3d49f0310c7c4</sys_data_policy>
         <sys_id>cf4f232a4f2f3240f5f3d49f0310c712</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>description</sys_name>

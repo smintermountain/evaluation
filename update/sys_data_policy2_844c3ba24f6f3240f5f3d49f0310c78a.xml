@@ -4,7 +4,7 @@
         <active>true</active>
         <apply_import_set>true</apply_import_set>
         <apply_soap>true</apply_soap>
-        <conditions table="x_inthe_eval_use_case">stateINscoring,complete^EQ<item endquery="false" field="state" goto="false" newquery="false" operator="IN" or="false" value="scoring,complete"/>
+        <conditions table="x_inthe_eval_use_case">state=complete^EQ<item endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="complete"/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </conditions>
         <description>Additive to 'SET Use Case - Read only when final/scoring/complete'</description>
@@ -12,17 +12,17 @@
         <inherit>false</inherit>
         <model_id/>
         <model_table>x_inthe_eval_use_case</model_table>
-        <reverse_if_false>true</reverse_if_false>
-        <short_description>SET Use Case - Read only when scoring/complete</short_description>
+        <reverse_if_false>false</reverse_if_false>
+        <short_description>SET Use Case - State is read only when complete</short_description>
         <sys_class_name>sys_data_policy2</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-27 18:29:21</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>844c3ba24f6f3240f5f3d49f0310c78a</sys_id>
-        <sys_mod_count>1</sys_mod_count>
-        <sys_name>SET Use Case - Read only when scoring/complete</sys_name>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>SET Use Case - State is read only when complete</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
@@ -30,6 +30,6 @@
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_data_policy2_844c3ba24f6f3240f5f3d49f0310c78a</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-06-27 18:29:50</sys_updated_on>
+        <sys_updated_on>2017-07-11 16:57:17</sys_updated_on>
     </sys_data_policy2>
 </record_update>

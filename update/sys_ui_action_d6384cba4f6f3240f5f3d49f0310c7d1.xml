@@ -20,10 +20,46 @@ Updates state to final</comments>
         <list_context_menu>false</list_context_menu>
         <list_link>false</list_link>
         <list_save_with_form_button>false</list_save_with_form_button>
-        <name>**Validate Completion</name>
+        <name>Finalize Evaluation</name>
         <onclick/>
         <order>100</order>
-        <script/>
+        <script><![CDATA[//Validate child criterion are marked as final
+var criStateArray = [];
+var grCri = new GlideRecord('x_inthe_eval_criterion');
+grCri.addQuery('evaluation',current.sys_id);
+grCri.query();
+while (grCri.next()) { 
+	criStateArray.push(grCri.state+'');}
+var criteriaStates = criStateArray.toString();
+var notFinal = criteriaStates.includes("in_progress" || 'new');
+if(notFinal == true){
+	gs.addErrorMessage("Not all child Criteria are marked as Final. Please review and finalize each Use Case.");
+	}
+else if (notFinal == false){
+
+	//Mark child Use Cases as Final
+	var grUseCase = new GlideRecord('x_inthe_eval_use_case');
+	grUseCase.addQuery('evaluation', current.sys_id);
+	grUseCase.query();
+	grUseCase.setValue('state', 'final');
+	grUseCase.updateMultiple();
+	
+	//Mark child Solutions as Final
+	var grUseCase = new GlideRecord('x_inthe_eval_solution');
+	grUseCase.addQuery('evaluation', current.sys_id);
+	grUseCase.query();
+	grUseCase.setValue('state', 'final');
+	grUseCase.updateMultiple();
+	gs.addInfoMessage("Criteria, Use Cases, and Solutions are finalized and ready for you to generate Score Cards.");
+
+	//Mark current evaluation as Final
+	var grCurrent = new GlideRecord('x_inthe_eval_evaluation');
+	grCurrent.addQuery('sys_id',current.sys_id);
+	grCurrent.query();
+	grCurrent.setValue('state','final');
+	grCurrent.updateMultiple();	
+}
+action.setRedirectURL(current);]]></script>
         <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
@@ -31,12 +67,12 @@ Updates state to final</comments>
         <sys_class_name>sys_ui_action</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-27 19:22:03</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>d6384cba4f6f3240f5f3d49f0310c7d1</sys_id>
-        <sys_mod_count>4</sys_mod_count>
-        <sys_name>**Validate Completion</sys_name>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>Finalize Evaluation</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
@@ -44,7 +80,7 @@ Updates state to final</comments>
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_ui_action_d6384cba4f6f3240f5f3d49f0310c7d1</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-06-27 19:31:22</sys_updated_on>
+        <sys_updated_on>2017-07-11 18:37:48</sys_updated_on>
         <table>x_inthe_eval_evaluation</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

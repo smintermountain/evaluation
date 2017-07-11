@@ -5,7 +5,7 @@
         <active>true</active>
         <client>false</client>
         <comments>Checks all child score cards for state = final, changes state of eval and child records to Complete. </comments>
-        <condition>current.state=='final'</condition>
+        <condition>current.state=='scoring'</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
         <form_context_menu>false</form_context_menu>
@@ -29,11 +29,11 @@
         <sys_class_name>sys_ui_action</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-29 19:17:11</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>22f996d74fe3b240f5f3d49f0310c79d</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>**Generate Results</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -42,7 +42,7 @@
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_ui_action_22f996d74fe3b240f5f3d49f0310c79d</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-06-29 19:17:18</sys_updated_on>
+        <sys_updated_on>2017-07-11 17:09:41</sys_updated_on>
         <table>x_inthe_eval_evaluation</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

@@ -5,7 +5,7 @@
         <active>true</active>
         <client>false</client>
         <comments/>
-        <condition/>
+        <condition>current.state=='final'</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
         <form_context_menu>false</form_context_menu>
@@ -31,110 +31,140 @@ while (grUse.next()) {
 var useCaseStates = ucStateArray.toString();
 var notFinal = useCaseStates.includes("in_progress");
 if(notFinal == true){
-		gs.addErrorMessage("Please ensure all use cases are marked as Final before continuing.");
+	gs.addErrorMessage("Please ensure all use cases are marked as Final before continuing.");
 	}
 	else if (notFinal == false){
 
-//Get evaluators (users) list and convert to array
-var evaluators = current.evaluators.split(',');
-//gs.addInfoMessage('Evaluators array is ' + evaluators);
+	//Mark child solutions as Complete
+	var grSolutions = new GlideRecord('x_inthe_eval_solution');
+	grSolutions.addQuery('evaluation', current.sys_id);
+	grSolutions.query();
+	grSolutions.setValue('state',  'complete');
+	grSolutions.updateMultiple();
 
-//Get solutions and put in array
-var solutionsArray = [];
-var solutions = new GlideRecord('x_inthe_eval_solution');
-solutions.addQuery('evaluation',current.sys_id);
-solutions.query();
-//gs.addInfoMessage('Row Count is: ' + solutions.getRowCount());
-while (solutions.next()) { 
-	solutionsArray.push(solutions.sys_id + '');
-}
-//gs.addInfoMessage('Solutions Array is ' + solutionsArray);
+	//Mark child Use Cases as Scoring
+	var grUseCase = new GlideRecord('x_inthe_eval_use_case');
+	grUseCase.addQuery('evaluation', current.sys_id);
+	grUseCase.query();
+	grUseCase.setValue('state',  'scoring');
+	grUseCase.updateMultiple();
 
+	//Mark child Criteria as Scoring
+	var grCriteria = new GlideRecord('x_inthe_eval_criterion');
+	grCriteria.addQuery('evaluation', current.sys_id);
+	grCriteria.query();
+	grCriteria.setValue('state',  'scoring');
+	grCriteria.updateMultiple();
 
-//Get criteria and put in array
-var criteriaArray = [];
-var criteria = new GlideRecord('x_inthe_eval_criterion');
-criteria.addQuery('evaluation',current.sys_id);
-criteria.query();
-//gs.addInfoMessage('Row Count is: ' + solutions.getRowCount());
-while (criteria.next()) { 
-	criteriaArray.push(criteria.sys_id + '');
-}
-//gs.addInfoMessage('Criteria Array is ' + criteriaArray);
+	//Mark current record as Scoring
+	var grCurrent = new GlideRecord('x_inthe_eval_evaluation');
+	grCurrent.addQuery('sys_id',current.sys_id);
+	grCurrent.query();
+	grCurrent.setValue('state','scoring');
+	grCurrent.updateMultiple();
+	
 
+	//Get evaluators (users) list and convert to array
+	var evaluators = current.evaluators.split(',');
 
-//Create new array and solLength variables
-var scoreCards = [];
-var solLength = solutionsArray.length;
-//gs.addInfoMessage('solLength is ' + solLength);
-//gs.addInfoMessage('Evaluators length is ' + evaluators.length);
-
-//Create score cards
-for (i=0; i < evaluators.length; i++){
-	var a=0;
-	while (a < solLength){
-		var grScore = new GlideRecord("x_inthe_eval_score_card");
-		grScore.initialize();
-		grScore.evaluator = evaluators[i];
-		grScore.evaluation = current.sys_id;
-		grScore.solution = solutionsArray[a];
-		grScore.state = 'in_progress';
-		var newScoreCard = grScore.insert();
-		scoreCards.push(grScore.sys_id);
-		a++;
+	//Get solutions and put in array
+	var solutionsArray = [];
+	var solutions = new GlideRecord('x_inthe_eval_solution');
+	solutions.addQuery('evaluation',current.sys_id);
+	solutions.query();
+	//gs.addInfoMessage('Row Count is: ' + solutions.getRowCount());
+	while (solutions.next()) { 
+		solutionsArray.push(solutions.sys_id + '');
 	}
-} 
-//gs.addInfoMessage('Score Cards are ' + scoreCards);
+	//gs.addInfoMessage('Solutions Array is ' + solutionsArray);
 
 
-//Create ratings records from score cards
-var rating = [];
-try{
-	//Create ratings for each score card
-	for(j=0,k=0; j<scoreCards.length;j++,k++){
-		// Get criteria length
-		var criLength = criteriaArray.length;
-		//gs.addInfoMessage("Criteria Length is: " + criLength);
-		
-		//Lookup evaluator from Score Card
-		var scEvaluator = '';
-		var grEvaluator = new GlideRecord("x_inthe_eval_score_card");
-		grEvaluator.addQuery('sys_id',scoreCards[j]);
-		grEvaluator.query();
-		//gs.addInfoMessage('Row Count is: ' + grEvaluator.getRowCount());
-		while (grEvaluator.next()) { 
-			scEvaluator = grEvaluator.evaluator;
-			//gs.addInfoMessage("Evaluator is " + scEvaluator);
-		}
-		
-		//Lookup solution from score card
-		var scSolution = '';
-		var grSolution = new GlideRecord("x_inthe_eval_score_card");
-		grSolution.addQuery('sys_id',scoreCards[j]);
-		grSolution.query();
-		while (grSolution.next()) { 
-			scSolution = grSolution.solution;
-			//gs.addInfoMessage("Solution is " + scSolution);
-		}
-		//for each criteria create a rating record for each user and solution
-		for (k=0; k<criLength; k++){
-		var grRating = new GlideRecord("x_inthe_eval_rating");
-		grRating.initialize();
-		grRating.score_card = scoreCards[j];
-		grRating.criterion = criteriaArray[k];
-		grRating.evaluator = scEvaluator;
-		grRating.solution = scSolution;
-		var newRating = grRating.insert();
-		var ratingsArray = [];
-			ratingsArray.push(grRating.sys_id);
-			//gs.addInfoMessage("Ratings added: " + ratingsArray);
-		}
+	//Get criteria and put in array
+	var criteriaArray = [];
+	var criteria = new GlideRecord('x_inthe_eval_criterion');
+	criteria.addQuery('evaluation',current.sys_id);
+	criteria.query();
+	while (criteria.next()) { 
+		criteriaArray.push(criteria.sys_id + '');
 	}
-}	catch(e) {
-	gs.error("Error in UI Action 'grRatings' on line #{0}: {1}",e.lineNumber,e.message);
-}
-		//closes  if statement from the beginning
-}]]></script>
+	//gs.addInfoMessage('Criteria Array is ' + criteriaArray);
+
+
+	//Create new array and solLength variables
+	var scoreCards = [];
+	var solLength = solutionsArray.length;
+	//gs.addInfoMessage('solLength is ' + solLength);
+	//gs.addInfoMessage('Evaluators length is ' + evaluators.length);
+
+	//Create score cards
+	for (i=0; i < evaluators.length; i++){
+		var a=0;
+		while (a < solLength){
+			var grScore = new GlideRecord("x_inthe_eval_score_card");
+			grScore.initialize();
+			grScore.evaluator = evaluators[i];
+			grScore.evaluation = current.sys_id;
+			grScore.solution = solutionsArray[a];
+			grScore.state = 'in_progress';
+			var newScoreCard = grScore.insert();
+			scoreCards.push(grScore.sys_id);
+			a++;
+		}
+	} 
+	//gs.addInfoMessage('Score Cards are ' + scoreCards);
+
+
+	//Create ratings records from score cards
+	var rating = [];
+	try{
+		
+		//Create ratings for each score card
+		for(j=0,k=0; j<scoreCards.length;j++,k++){
+		
+			// Get criteria length
+			var criLength = criteriaArray.length;
+			
+			//Lookup evaluator from Score Card
+			var scEvaluator = '';
+			var grEvaluator = new GlideRecord("x_inthe_eval_score_card");
+			grEvaluator.addQuery('sys_id',scoreCards[j]);
+			grEvaluator.query();
+			//gs.addInfoMessage('Row Count is: ' + grEvaluator.getRowCount());
+			while (grEvaluator.next()) { 
+				scEvaluator = grEvaluator.evaluator;
+				//gs.addInfoMessage("Evaluator is " + scEvaluator);
+			}
+
+			//Lookup solution from score card
+			var scSolution = '';
+			var grSolution = new GlideRecord("x_inthe_eval_score_card");
+			grSolution.addQuery('sys_id',scoreCards[j]);
+			grSolution.query();
+			while (grSolution.next()) { 
+				scSolution = grSolution.solution;
+				//gs.addInfoMessage("Solution is " + scSolution);
+			}
+			
+			//For each criteria create a rating record for each user and solution
+			for (k=0; k<criLength; k++){
+			var grRating = new GlideRecord("x_inthe_eval_rating");
+			grRating.initialize();
+			grRating.score_card = scoreCards[j];
+			grRating.criterion = criteriaArray[k];
+			grRating.evaluator = scEvaluator;
+			grRating.solution = scSolution;
+			var newRating = grRating.insert();
+			var ratingsArray = [];
+				ratingsArray.push(grRating.sys_id);
+				//gs.addInfoMessage("Ratings added: " + ratingsArray);
+			}
+		}
+	}	catch(e) {
+		gs.error("Error in UI Action 'grRatings' on line #{0}: {1}",e.lineNumber,e.message);
+	}
+			//closes  if statement from the beginning
+	}
+action.setRedirectURL(current);]]></script>
         <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
@@ -146,7 +176,7 @@ try{
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>c9df63324fffb200f5f3d49f0310c731</sys_id>
-        <sys_mod_count>26</sys_mod_count>
+        <sys_mod_count>40</sys_mod_count>
         <sys_name>Generate Score Cards</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -155,7 +185,7 @@ try{
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_ui_action_c9df63324fffb200f5f3d49f0310c731</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-07-11 03:16:13</sys_updated_on>
+        <sys_updated_on>2017-07-11 18:38:37</sys_updated_on>
         <table>x_inthe_eval_evaluation</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>
