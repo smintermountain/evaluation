@@ -13,7 +13,7 @@
         <sys_class_name>sys_user_role</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-28 18:58:30</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>d35cc1cb4f6f3e40af76d0af0310c77f</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_inthe_eval.admin</sys_name>

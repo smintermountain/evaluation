@@ -70,7 +70,7 @@ IHCAdvancedReferenceQualifiers.prototype = {
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-28 17:16:41</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>d902b0c74f2f3e40af76d0af0310c72c</sys_id>
         <sys_mod_count>3</sys_mod_count>
         <sys_name>solution_evaluation_tool</sys_name>

@@ -51,9 +51,9 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-26 17:59:32</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
-        <sys_id>30cb6a9a4f233240f5f3d49f0310c764</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>0302e4dd4f777200af76d0af0310c7cf</sys_id>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>Solution</sys_name>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
@@ -61,7 +61,7 @@
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_dictionary_x_inthe_eval_solution_solution</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-06-26 17:59:32</sys_updated_on>
+        <sys_updated_on>2017-07-10 20:54:34</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

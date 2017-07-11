@@ -2,7 +2,7 @@
 <record_update sys_domain="global" table="sys_ui_action">
     <sys_ui_action action="INSERT_OR_UPDATE">
         <action_name/>
-        <active>false</active>
+        <active>true</active>
         <client>false</client>
         <comments/>
         <condition/>
@@ -18,11 +18,24 @@
         <list_context_menu>false</list_context_menu>
         <list_link>false</list_link>
         <list_save_with_form_button>false</list_save_with_form_button>
-        <name>**Generate Score Cards</name>
+        <name>Generate Score Cards</name>
         <onclick/>
         <order>100</order>
-        <script><![CDATA[//Get evaluators (users) list and convert to array
-//gs.addInfoMessage("Evaluators are " + current.evaluators);
+        <script><![CDATA[//Validate child use cases are marked as final
+var ucStateArray = [];
+var grUse = new GlideRecord('x_inthe_eval_use_case');
+grUse.addQuery('evaluation',current.sys_id);
+grUse.query();
+while (grUse.next()) { 
+	ucStateArray.push(grUse.state+'');}
+var useCaseStates = ucStateArray.toString();
+var notFinal = useCaseStates.includes("in_progress");
+if(notFinal == true){
+		gs.addErrorMessage("Please ensure all use cases are marked as Final before continuing.");
+	}
+	else if (notFinal == false){
+
+//Get evaluators (users) list and convert to array
 var evaluators = current.evaluators.split(',');
 //gs.addInfoMessage('Evaluators array is ' + evaluators);
 
@@ -35,7 +48,6 @@ solutions.query();
 while (solutions.next()) { 
 	solutionsArray.push(solutions.sys_id + '');
 }
-//gs.addInfoMessage("Type of Array is: " + typeof solutionsArray);
 //gs.addInfoMessage('Solutions Array is ' + solutionsArray);
 
 
@@ -48,8 +60,8 @@ criteria.query();
 while (criteria.next()) { 
 	criteriaArray.push(criteria.sys_id + '');
 }
-//gs.addInfoMessage("Type of Array is: " + typeof criteriaArray);
 //gs.addInfoMessage('Criteria Array is ' + criteriaArray);
+
 
 //Create new array and solLength variables
 var scoreCards = [];
@@ -72,71 +84,78 @@ for (i=0; i < evaluators.length; i++){
 		a++;
 	}
 } 
-gs.addInfoMessage('Score Cards are ' + scoreCards);
+//gs.addInfoMessage('Score Cards are ' + scoreCards);
 
 
 //Create ratings records from score cards
 var rating = [];
 try{
-	//Score cards
-	for(j=0; j<scoreCards.length;j++){
-		// Criteria
-		for (k=0;k<criteriaArray.length;k++){
-			// Solutions
-			for(l=0;l<solutionsArray.length;l++){
-				// lookup score cards from the array
-				var scSolution = '';
-				var scEvaluator = '';
-				var scGRSolution = new GlideRecord('x_inthe_eval_score_card');
-				scGRSolution.addQuery('sys_id',scoreCards[l]);
-				scGRSolution.query();
-				gs.addInfoMessage('Row Count is: ' + scGRSolution.getRowCount());
-				//set and display variables
-				while (scGRSolution.next()){
-					scSolution = scGRSolution.solution;
-					for(m=0;scGRSolution.next();m++) {
-						scEvaluator = scGRSolution.evaluator;
-					}
-					gs.addInfoMessage("Solution is " + scSolution + "and Evaluator is " + scEvaluator);					
-				}
-				//create new rating
-					var grRatings = new GlideRecord("x_inthe_eval_rating");
-					grRatings.criterion = criteriaArray[k];
-					grRatings.score_card = scoreCards[j];
-					grRatings.solution = scSolution;
-					grRatings.evaluator = scEvaluator;
-					var newRatings = grRatings.insert();
-					// add to array of created ratings
-					rating.push(grRatings.sys_id+'');
-				}
-			}
+	//Create ratings for each score card
+	for(j=0,k=0; j<scoreCards.length;j++,k++){
+		// Get criteria length
+		var criLength = criteriaArray.length;
+		//gs.addInfoMessage("Criteria Length is: " + criLength);
+		
+		//Lookup evaluator from Score Card
+		var scEvaluator = '';
+		var grEvaluator = new GlideRecord("x_inthe_eval_score_card");
+		grEvaluator.addQuery('sys_id',scoreCards[j]);
+		grEvaluator.query();
+		//gs.addInfoMessage('Row Count is: ' + grEvaluator.getRowCount());
+		while (grEvaluator.next()) { 
+			scEvaluator = grEvaluator.evaluator;
+			//gs.addInfoMessage("Evaluator is " + scEvaluator);
+		}
+		
+		//Lookup solution from score card
+		var scSolution = '';
+		var grSolution = new GlideRecord("x_inthe_eval_score_card");
+		grSolution.addQuery('sys_id',scoreCards[j]);
+		grSolution.query();
+		while (grSolution.next()) { 
+			scSolution = grSolution.solution;
+			//gs.addInfoMessage("Solution is " + scSolution);
+		}
+		//for each criteria create a rating record for each user and solution
+		for (k=0; k<criLength; k++){
+		var grRating = new GlideRecord("x_inthe_eval_rating");
+		grRating.initialize();
+		grRating.score_card = scoreCards[j];
+		grRating.criterion = criteriaArray[k];
+		grRating.evaluator = scEvaluator;
+		grRating.solution = scSolution;
+		var newRating = grRating.insert();
+		var ratingsArray = [];
+			ratingsArray.push(grRating.sys_id);
+			//gs.addInfoMessage("Ratings added: " + ratingsArray);
 		}
 	}
-		catch(e) {
+}	catch(e) {
 	gs.error("Error in UI Action 'grRatings' on line #{0}: {1}",e.lineNumber,e.message);
 }
-gs.addInfoMessage("Ratings are " + rating);]]></script>
+		//closes  if statement from the beginning
+}]]></script>
         <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
         <show_update>true</show_update>
         <sys_class_name>sys_ui_action</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
-        <sys_created_on>2017-06-27 19:26:05</sys_created_on>
+        <sys_created_on>2017-07-10 22:29:16</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
-        <sys_id>fc2984fa4f6f3240f5f3d49f0310c759</sys_id>
-        <sys_mod_count>154</sys_mod_count>
-        <sys_name>**Generate Score Cards</sys_name>
+        <sys_id>c9df63324fffb200f5f3d49f0310c731</sys_id>
+        <sys_mod_count>26</sys_mod_count>
+        <sys_name>Generate Score Cards</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
-        <sys_update_name>sys_ui_action_fc2984fa4f6f3240f5f3d49f0310c759</sys_update_name>
+        <sys_update_name>sys_ui_action_c9df63324fffb200f5f3d49f0310c731</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-07-11 02:46:16</sys_updated_on>
+        <sys_updated_on>2017-07-11 03:16:13</sys_updated_on>
         <table>x_inthe_eval_evaluation</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

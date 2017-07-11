@@ -7,7 +7,7 @@
         <sys_class_name>sys_ui_policy_action</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-29 19:02:15</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>9df61a174fe3b240f5f3d49f0310c71c</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>criticality</sys_name>
