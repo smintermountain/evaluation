@@ -4,8 +4,8 @@
         <action_name/>
         <active>true</active>
         <client>false</client>
-        <comments>Checks all child records for completion&#13;
-Updates child records  to final&#13;
+        <comments>Checks all child use cases for state = final&#13;
+Marks child solutions as final&#13;
 Updates state to final</comments>
         <condition>current.state=='in_progress'</condition>
         <form_action>true</form_action>
@@ -23,33 +23,33 @@ Updates state to final</comments>
         <name>Finalize Evaluation</name>
         <onclick/>
         <order>100</order>
-        <script><![CDATA[//Validate child criterion are marked as final
-var criStateArray = [];
-var grCri = new GlideRecord('x_inthe_eval_criterion');
-grCri.addQuery('evaluation',current.sys_id);
-grCri.query();
-while (grCri.next()) { 
-	criStateArray.push(grCri.state+'');}
-var criteriaStates = criStateArray.toString();
-var notFinal = criteriaStates.includes("in_progress" || 'new');
+        <script><![CDATA[//Validate child use cases are marked as final
+var ucStateArray = [];
+var grUC = new GlideRecord('x_inthe_eval_use_case');
+grUC.addQuery('evaluation',current.sys_id);
+grUC.query();
+var ucCount = grUC.getRowCount();
+while (grUC.next()) { 
+	ucStateArray.push(grUC.state+'');}
+var ucStates = ucStateArray.toString();
+//gs.addInfoMessage("UC state array: " +ucStates);
+var notFinal = ucStates.includes("in_progress" || 'new');
 if(notFinal == true){
-	gs.addErrorMessage("Not all child Criteria are marked as Final. Please review and finalize each Use Case.");
+	gs.addErrorMessage("Use Cases have not been marked as Final. Please review and finalize each Use Case and Criteria before finalizing the Evaluation.");
 	}
-else if (notFinal == false){
-
-	//Mark child Use Cases as Final
-	var grUseCase = new GlideRecord('x_inthe_eval_use_case');
-	grUseCase.addQuery('evaluation', current.sys_id);
-	grUseCase.query();
-	grUseCase.setValue('state', 'final');
-	grUseCase.updateMultiple();
+else if (notFinal == false|| ucCount > 0){
 	
 	//Mark child Solutions as Final
-	var grUseCase = new GlideRecord('x_inthe_eval_solution');
-	grUseCase.addQuery('evaluation', current.sys_id);
-	grUseCase.query();
-	grUseCase.setValue('state', 'final');
-	grUseCase.updateMultiple();
+	var grSol = new GlideRecord('x_inthe_eval_solution');
+	grSol.addQuery('evaluation', current.sys_id);
+	grSol.query();
+	var solCount = grSol.getRowCount();
+	if (solCount == 0){
+		gs.addErrorMessage("There are no Solutions created for this Evaluation. Please create a solution before continuing.");
+	}
+	else if (ucCount > 0){
+	grSol.setValue('state', 'final');
+	grSol.updateMultiple();
 	gs.addInfoMessage("Criteria, Use Cases, and Solutions are finalized and ready for you to generate Score Cards.");
 
 	//Mark current evaluation as Final
@@ -58,6 +58,7 @@ else if (notFinal == false){
 	grCurrent.query();
 	grCurrent.setValue('state','final');
 	grCurrent.updateMultiple();	
+	}
 }
 action.setRedirectURL(current);]]></script>
         <show_insert>false</show_insert>
@@ -71,7 +72,7 @@ action.setRedirectURL(current);]]></script>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>d6384cba4f6f3240f5f3d49f0310c7d1</sys_id>
-        <sys_mod_count>11</sys_mod_count>
+        <sys_mod_count>19</sys_mod_count>
         <sys_name>Finalize Evaluation</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -80,7 +81,7 @@ action.setRedirectURL(current);]]></script>
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_ui_action_d6384cba4f6f3240f5f3d49f0310c7d1</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-07-11 18:37:48</sys_updated_on>
+        <sys_updated_on>2017-07-12 23:46:53</sys_updated_on>
         <table>x_inthe_eval_evaluation</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

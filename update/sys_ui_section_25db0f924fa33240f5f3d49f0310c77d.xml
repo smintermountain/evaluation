@@ -5,83 +5,97 @@
             <element>number</element>
             <position>0</position>
             <sys_created_by>awyoung</sys_created_by>
-            <sys_created_on>2017-06-26 20:19:06</sys_created_on>
-            <sys_id>c6cbcb924fa33240f5f3d49f0310c7c6</sys_id>
+            <sys_created_on>2017-07-12 23:54:49</sys_created_on>
+            <sys_id>6196d6634f7b3600f5f3d49f0310c7e6</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_inthe_eval_focus_area" sys_domain="global" view="Default view">25db0f924fa33240f5f3d49f0310c77d</sys_ui_section>
             <sys_updated_by>awyoung</sys_updated_by>
-            <sys_updated_on>2017-06-26 20:19:06</sys_updated_on>
+            <sys_updated_on>2017-07-12 23:54:49</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>evaluation</element>
+            <position>1</position>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-07-12 23:54:49</sys_created_on>
+            <sys_id>e196d6634f7b3600f5f3d49f0310c7e6</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_inthe_eval_focus_area" sys_domain="global" view="Default view">25db0f924fa33240f5f3d49f0310c77d</sys_ui_section>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-07-12 23:54:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
-            <position>1</position>
+            <position>2</position>
             <sys_created_by>awyoung</sys_created_by>
-            <sys_created_on>2017-06-26 20:19:06</sys_created_on>
-            <sys_id>4acbcb924fa33240f5f3d49f0310c7c6</sys_id>
+            <sys_created_on>2017-07-12 23:54:49</sys_created_on>
+            <sys_id>6596d6634f7b3600f5f3d49f0310c7e6</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_inthe_eval_focus_area" sys_domain="global" view="Default view">25db0f924fa33240f5f3d49f0310c77d</sys_ui_section>
             <sys_updated_by>awyoung</sys_updated_by>
-            <sys_updated_on>2017-06-26 20:19:06</sys_updated_on>
+            <sys_updated_on>2017-07-12 23:54:49</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>evaluation</element>
-            <position>2</position>
+            <element>evaluation.state</element>
+            <position>3</position>
             <sys_created_by>awyoung</sys_created_by>
-            <sys_created_on>2017-06-26 20:19:06</sys_created_on>
-            <sys_id>cacbcb924fa33240f5f3d49f0310c7c6</sys_id>
+            <sys_created_on>2017-07-12 23:54:49</sys_created_on>
+            <sys_id>e596d6634f7b3600f5f3d49f0310c7e6</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_inthe_eval_focus_area" sys_domain="global" view="Default view">25db0f924fa33240f5f3d49f0310c77d</sys_ui_section>
             <sys_updated_by>awyoung</sys_updated_by>
-            <sys_updated_on>2017-06-26 20:19:06</sys_updated_on>
+            <sys_updated_on>2017-07-12 23:54:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.end_split</element>
-            <position>3</position>
+            <position>4</position>
             <sys_created_by>awyoung</sys_created_by>
-            <sys_created_on>2017-06-26 20:19:06</sys_created_on>
-            <sys_id>4ecbcb924fa33240f5f3d49f0310c7c6</sys_id>
+            <sys_created_on>2017-07-12 23:54:49</sys_created_on>
+            <sys_id>6996d6634f7b3600f5f3d49f0310c7e6</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_inthe_eval_focus_area" sys_domain="global" view="Default view">25db0f924fa33240f5f3d49f0310c77d</sys_ui_section>
             <sys_updated_by>awyoung</sys_updated_by>
-            <sys_updated_on>2017-06-26 20:19:06</sys_updated_on>
+            <sys_updated_on>2017-07-12 23:54:49</sys_updated_on>
             <sys_user/>
             <type>.end_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>focus_area</element>
-            <position>4</position>
+            <position>5</position>
             <sys_created_by>awyoung</sys_created_by>
-            <sys_created_on>2017-06-26 20:19:06</sys_created_on>
-            <sys_id>cecbcb924fa33240f5f3d49f0310c7c6</sys_id>
+            <sys_created_on>2017-07-12 23:54:49</sys_created_on>
+            <sys_id>e996d6634f7b3600f5f3d49f0310c7e6</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_inthe_eval_focus_area" sys_domain="global" view="Default view">25db0f924fa33240f5f3d49f0310c77d</sys_ui_section>
             <sys_updated_by>awyoung</sys_updated_by>
-            <sys_updated_on>2017-06-26 20:19:06</sys_updated_on>
+            <sys_updated_on>2017-07-12 23:54:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>description</element>
-            <position>5</position>
+            <position>6</position>
             <sys_created_by>awyoung</sys_created_by>
-            <sys_created_on>2017-06-26 20:19:06</sys_created_on>
-            <sys_id>42cbcb924fa33240f5f3d49f0310c7c7</sys_id>
+            <sys_created_on>2017-07-12 23:54:49</sys_created_on>
+            <sys_id>6d96d6634f7b3600f5f3d49f0310c7e6</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_inthe_eval_focus_area" sys_domain="global" view="Default view">25db0f924fa33240f5f3d49f0310c77d</sys_ui_section>
             <sys_updated_by>awyoung</sys_updated_by>
-            <sys_updated_on>2017-06-26 20:19:06</sys_updated_on>
+            <sys_updated_on>2017-07-12 23:54:49</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -97,7 +111,7 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>25db0f924fa33240f5f3d49f0310c77d</sys_id>
-            <sys_mod_count>0</sys_mod_count>
+            <sys_mod_count>1</sys_mod_count>
             <sys_name>x_inthe_eval_focus_area</sys_name>
             <sys_overrides/>
             <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -106,7 +120,7 @@
             <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
             <sys_update_name>sys_ui_section_25db0f924fa33240f5f3d49f0310c77d</sys_update_name>
             <sys_updated_by>awyoung</sys_updated_by>
-            <sys_updated_on>2017-06-26 20:19:06</sys_updated_on>
+            <sys_updated_on>2017-07-12 23:54:49</sys_updated_on>
             <sys_user/>
             <title>false</title>
             <view display_value="Default view" name="NULL">Default view</view>

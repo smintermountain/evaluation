@@ -12,7 +12,7 @@
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
-        <sys_ui_action display_value="**Generate Results">22f996d74fe3b240f5f3d49f0310c79d</sys_ui_action>
+        <sys_ui_action display_value="**Complete Evaluation">22f996d74fe3b240f5f3d49f0310c79d</sys_ui_action>
         <sys_update_name>sys_ui_action_role_685a1ad74fe3b240f5f3d49f0310c7f6</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
         <sys_updated_on>2017-06-29 19:17:11</sys_updated_on>

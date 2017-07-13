@@ -23,23 +23,43 @@ Updates child criteria state to final</comments>
         <name>Finalize Use Case</name>
         <onclick/>
         <order>100</order>
-        <script><![CDATA[//Validate child criterion are marked as final
-var criStateArray = [];
+        <script><![CDATA[//Validate child criterion are complete (required fields)
+var criArray = [];
+var criPresentArray = [];
 var grCri = new GlideRecord('x_inthe_eval_criterion');
 grCri.addQuery('use_case',current.sys_id);
 grCri.query();
 while (grCri.next()) { 
-	criStateArray.push(grCri.state+'');}
-var criteriaStates = criStateArray.toString();
-var notFinal = criteriaStates.includes("in_progress" || 'new');
-if(notFinal == true){
-	gs.addErrorMessage("Not all child Criteria were marked as Final. Please review and finalize each Criteria.");
+	criArray.push(grCri.criterion+'');
+	criArray.push(grCri.criticality+'');}
+//gs.addInfoMessage("grCri array is "+grCri.toString());
+for (i=0;i<criArray.length;i++){
+	if(criArray[i]==''){
+		var criPresent = 'false';
 	}
-else if (notFinal == false){
+	if(criArray[i]!=''){
+		var criPresent = 'true';
+	}
+	criPresentArray.push(criPresent);
+	}
+//gs.addInfoMessage("Criteria Present array: " +criPresentArray);
 
+//if any required field is not complete give the user an error
+criPresentArrayString = criPresentArray.toString();
+if(criPresentArrayString.includes('false')){
+	gs.addErrorMessage("Not all criteria have been completed. Please complete required fields for each criterion before continuing.");
+}
+else{
 	//Mark current use case as Final
 	var grCurrent = new GlideRecord('x_inthe_eval_use_case');
 	grCurrent.addQuery('sys_id',current.sys_id);
+	grCurrent.query();
+	grCurrent.setValue('state','final');
+	grCurrent.updateMultiple();	
+	
+	//Mark child criteria as Final
+	var grCurrent = new GlideRecord('x_inthe_eval_criterion');
+	grCurrent.addQuery('use_case',current.sys_id);
 	grCurrent.query();
 	grCurrent.setValue('state','final');
 	grCurrent.updateMultiple();	
@@ -56,7 +76,7 @@ action.setRedirectURL(current);]]></script>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>49dff7664f6f3240f5f3d49f0310c745</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>8</sys_mod_count>
         <sys_name>Finalize Use Case</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -65,7 +85,7 @@ action.setRedirectURL(current);]]></script>
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_ui_action_49dff7664f6f3240f5f3d49f0310c745</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-07-11 18:38:09</sys_updated_on>
+        <sys_updated_on>2017-07-12 23:35:56</sys_updated_on>
         <table>x_inthe_eval_use_case</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

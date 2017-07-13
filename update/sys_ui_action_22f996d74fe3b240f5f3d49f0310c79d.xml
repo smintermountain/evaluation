@@ -4,7 +4,11 @@
         <action_name/>
         <active>true</active>
         <client>false</client>
-        <comments>Checks all child score cards for state = final, changes state of eval and child records to Complete. </comments>
+        <comments>Checks all child ratings for completeness&#13;
+Changes child states to complete&#13;
+--Criteria, Use Case&#13;
+Changes evaluation state to complete&#13;
+Compiles  results somewhere...</comments>
         <condition>current.state=='scoring'</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
@@ -18,10 +22,76 @@
         <list_context_menu>false</list_context_menu>
         <list_link>false</list_link>
         <list_save_with_form_button>false</list_save_with_form_button>
-        <name>**Generate Results</name>
+        <name>**Complete Evaluation</name>
         <onclick/>
         <order>100</order>
-        <script/>
+        <script><![CDATA[//check child ratings
+
+//changes child criteria state to complete
+
+//changes child use cases to complete
+
+//changes evaluation state to complete
+
+//SOLUTIONS COUNTS
+	//variables and arrays
+		//get array of use cases - j
+		var useCaseArray = [];
+		grUseCase = new GlideRecord('x_inthe_eval_use_case');
+		grUseCase.addQuery('evaluation',current.sys_id);
+		grUseCase.query();
+		while (grUseCase.next()){
+			useCaseArray.push(grUseCase.sys_id);
+		}
+		gs.addInfoMessage("Use Case array is: "+useCaseArray.toString());
+		
+		//get array of solutions - k
+		var solutionsArray = [];
+		grSolutions = new GlideRecord('x_inthe_eval_solution');
+		grSolutions.addQuery('evaluation',current.sys_id);
+		grSolutions.query();
+		while (grSolutions.next()){
+			solutionsArray.push(grSolutions.sys_id);
+		}
+		gs.addInfoMessage("Solution array is: "+solutionsArray.toString());
+		
+		
+	//counts ratings
+	var ucTotalArray =[];
+	var ucTotal = new GlideRecord('x_inthe_eval_rating');
+	ucTotal.addQuery('use_case.evaluation',current.sys_id);
+	for (k=0;k<solutionsArray.length;k++){
+		ucTotal.addQuery('solution',solutionsArray[k]);
+	}
+	ucTotal.query();
+	while (ucTotal.next()){
+		ucTotalArray.push(ucTotal.sys_id);
+		var ucTotalCount = ucTotalArray.getRowCount();
+	}
+gs.addInfoMessage("Use Case array is: " + ucTotal.toString());
+gs.addInfoMessage("Use Case Total Count is: "+ucTotalCount);
+
+
+
+	//counts not rated
+
+	//counts not met
+
+	//counts essential not met
+
+	//counts fully met
+
+	//counts partially met
+
+	//counts essential partially met
+
+	//counts essential fully met
+
+	//adds counts for total variables
+
+
+//sets form values (percentages)
+	]]></script>
         <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
@@ -33,8 +103,8 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>22f996d74fe3b240f5f3d49f0310c79d</sys_id>
-        <sys_mod_count>2</sys_mod_count>
-        <sys_name>**Generate Results</sys_name>
+        <sys_mod_count>19</sys_mod_count>
+        <sys_name>**Complete Evaluation</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
@@ -42,7 +112,7 @@
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_ui_action_22f996d74fe3b240f5f3d49f0310c79d</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-07-11 17:09:41</sys_updated_on>
+        <sys_updated_on>2017-07-13 02:27:56</sys_updated_on>
         <table>x_inthe_eval_evaluation</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

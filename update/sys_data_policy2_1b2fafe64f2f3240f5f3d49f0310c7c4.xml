@@ -12,7 +12,7 @@
         <inherit>false</inherit>
         <model_id/>
         <model_table>x_inthe_eval_focus_area</model_table>
-        <reverse_if_false>true</reverse_if_false>
+        <reverse_if_false>false</reverse_if_false>
         <short_description>SET Focus Area - Read only when parent is final/scoring/complete</short_description>
         <sys_class_name>sys_data_policy2</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
@@ -21,7 +21,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>1b2fafe64f2f3240f5f3d49f0310c7c4</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>SET Focus Area - Read only when parent is final/scoring/complete</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -30,6 +30,6 @@
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_data_policy2_1b2fafe64f2f3240f5f3d49f0310c7c4</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-07-11 17:13:29</sys_updated_on>
+        <sys_updated_on>2017-07-12 23:55:49</sys_updated_on>
     </sys_data_policy2>
 </record_update>
