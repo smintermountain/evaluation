@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_form_sections form_id="e2383e4d4f0c8700af76d0af0310c78e" sys_domain="global" table="x_inthe_eval_results" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-07-17 18:12:40</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>6a383e4d4f0c8700af76d0af0310c78e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_inthe_eval_results" name="x_inthe_eval_results" sys_domain="global" view="Default view">e2383e4d4f0c8700af76d0af0310c78e</sys_ui_form>
+            <sys_ui_section caption="NULL" display_value="" name="x_inthe_eval_results" sys_domain="global" view="Default view">2df463f74ff37600f5f3d49f0310c72e</sys_ui_section>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-07-17 18:12:40</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>1</position>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-07-17 18:14:01</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>e288be4d4f0c8700af76d0af0310c773</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_inthe_eval_results" name="x_inthe_eval_results" sys_domain="global" view="Default view">e2383e4d4f0c8700af76d0af0310c78e</sys_ui_form>
+            <sys_ui_section caption="Percentages" display_value="Percentages" name="x_inthe_eval_results" sys_domain="global" view="Default view">6e88be4d4f0c8700af76d0af0310c772</sys_ui_section>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-07-17 18:14:01</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>2</position>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-07-17 18:12:40</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>ea383e4d4f0c8700af76d0af0310c78e</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_inthe_eval_results" name="x_inthe_eval_results" sys_domain="global" view="Default view">e2383e4d4f0c8700af76d0af0310c78e</sys_ui_form>
+            <sys_ui_section caption="Counts" display_value="Counts" name="x_inthe_eval_results" sys_domain="global" view="Default view">6e383e4d4f0c8700af76d0af0310c78d</sys_ui_section>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-07-17 18:14:01</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>x_inthe_eval_results</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-07-17 18:12:40</sys_created_on>
+            <sys_customer_update>true</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>e2383e4d4f0c8700af76d0af0310c78e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_inthe_eval_results</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
+            <sys_update_name>sys_ui_form_sections_e2383e4d4f0c8700af76d0af0310c78e</sys_update_name>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-07-17 18:12:40</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>

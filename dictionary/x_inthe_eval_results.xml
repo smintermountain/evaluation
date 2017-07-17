@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <element label="Results" max_length="40" name="x_inthe_eval_results" type="collection">
-        <element default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Criterion" max_length="32" name="criterion" read_only="true" reference="x_inthe_eval_criterion" type="reference"/>
+        <element label="Does Not Meet" max_length="20" name="does_not_meet" read_only="true" type="integer"/>
+        <element label="Evaluation" max_length="32" name="evaluation" read_only="true" reference="x_inthe_eval_evaluation" type="reference"/>
+        <element label="Fully Meets" max_length="20" name="fully_meets" read_only="true" type="integer"/>
+        <element label="Fully Met" max_length="40" name="fully_met" read_only="true" type="percent_complete"/>
+        <element label="Not Met" max_length="40" name="not_met" read_only="true" type="percent_complete"/>
+        <element label="Not Rated" max_length="40" name="not_rated" read_only="true" type="percent_complete"/>
+        <element default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" read_only="true" type="string"/>
+        <element label="Partially Meets" max_length="40" name="partially_meets" read_only="true" type="integer"/>
+        <element label="Partially Met" max_length="40" name="partially_met" read_only="true" type="percent_complete"/>
+        <element label="Ratings" max_length="40" name="ratings" read_only="true" type="integer"/>
+        <element label="Solution" max_length="32" name="solution" read_only="true" reference="x_inthe_eval_solution" type="reference"/>
+        <element label="Unable to Rate" max_length="40" name="unable_to_rate" read_only="true" type="integer"/>
+        <index name="index">
+            <element name="evaluation"/>
+        </index>
+        <index name="index2">
+            <element name="criterion"/>
+        </index>
+        <index name="index3">
+            <element name="solution"/>
+        </index>
     </element>
 </database>

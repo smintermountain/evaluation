@@ -22,7 +22,7 @@ Compiles  results somewhere...</comments>
         <list_context_menu>false</list_context_menu>
         <list_link>false</list_link>
         <list_save_with_form_button>false</list_save_with_form_button>
-        <name>**Complete Evaluation</name>
+        <name>**2 Complete Evaluation</name>
         <onclick/>
         <order>100</order>
         <script><![CDATA[//check child ratings
@@ -78,8 +78,50 @@ Compiles  results somewhere...</comments>
 				criTotal.addQuery('criterion',CriterionArray[l]);
 				criTotal.query();
 				var Total = criTotal.getRowCount();
-				//gs.addInfoMessage("Ratings Row Count is: " +Total);
+				//gs.addInfoMessage("Total Count is: " +Total);
+				//gs.addInfoMessage("Count is type: "+typeof(Total));
 
+				//lookup ratings that match solution and criterion and are NOT RATED
+				var unable_to_rate = new GlideRecord('x_inthe_eval_rating');
+				unable_to_rate.addQuery('solution',solutionsArray[k]);
+				unable_to_rate.addQuery('criterion',CriterionArray[l]);
+				unable_to_rate.addQuery('rating','unable_to_rate');
+				unable_to_rate.query();
+				var unableToRate = unable_to_rate.getRowCount();
+				var NotRated = (unableToRate/Total)*100;
+				//gs.addInfoMessage("Not Rated is: " +NotRated);
+				
+				//lookup ratings that match solution and criterion and DOES NOT MEET
+				var does_not_meet = new GlideRecord('x_inthe_eval_rating');
+				does_not_meet.addQuery('solution',solutionsArray[k]);
+				does_not_meet.addQuery('criterion',CriterionArray[l]);
+				does_not_meet.addQuery('rating','does_not_meet');
+				does_not_meet.query();
+				var doesNotMeet = does_not_meet.getRowCount();
+				gs.addInfoMessage('Does not meet is: '+doesNotMeet);
+				var NotMet = (doesNotMeet/Total)*100;
+				gs.addInfoMessage("Not Met is: " +NotMet);
+				
+				//lookup ratings that match solution and criterion and FULLY MET
+				var fully_meets = new GlideRecord('x_inthe_eval_rating');
+				fully_meets.addQuery('solution',solutionsArray[k]);
+				fully_meets.addQuery('criterion',CriterionArray[l]);
+				fully_meets.addQuery('rating','fully_meets');
+				fully_meets.query();
+				var fullyMeets = fully_meets.getRowCount();
+				var FullyMet = (fullyMeets/Total)*100;
+				//gs.addInfoMessage("Fully Met is: " +FullyMet);
+			
+				//lookup ratings that match solution and criterion and PARTIALLY MET
+				var partially_meets = new GlideRecord('x_inthe_eval_rating');
+				partially_meets.addQuery('solution',solutionsArray[k]);
+				partially_meets.addQuery('criterion',CriterionArray[l]);
+				partially_meets.addQuery('rating','partially_meets');
+				partially_meets.query();
+				var partiallyMeets = partially_meets.getRowCount();
+				var PartiallyMet = (partiallyMeets/Total)*100;
+				gs.addInfoMessage("Partially Met is: " +PartiallyMet);
+				
 				//create new results records for each solution and criterion
 				var gr = new GlideRecord('x_inthe_eval_results');
 				gr.initialize();
@@ -87,108 +129,26 @@ Compiles  results somewhere...</comments>
 				gr.solution=solutionsArray[k];
 				gr.criterion=CriterionArray[l];
 				gr.ratings=Total;
+				gr.unable_to_rate=unableToRate;
+				gr.not_rated=NotRated;
+				gr.does_not_meet=doesNotMeet;
+				gr.not_met=NotMet;
+				gr.fully_meets=fullyMeets;
+				gr.fully_met=FullyMet;
+				gr.partially_meets=partiallyMeets;
+				gr.partially_met=PartiallyMet;
 				gr.insert();
 				l++;
 				}
 		}
 
+	
 
-	//counts not rated
-		for(k=0;k<solutionsArray.length;k++){
-			var l=0;
-			while(l<CriterionArray.length){
-				//lookup ratings that match solution and criterion and are not rated
-				var criTotal = new GlideRecord('x_inthe_eval_rating');
-				criTotal.addQuery('solution',solutionsArray[k]);
-				criTotal.addQuery('criterion',CriterionArray[l]);
-				criTotal.addQuery('rating','unable_to_rate');
-				criTotal.query();
-				var Total = criTotal.getRowCount();
-				//gs.addInfoMessage("Ratings Row Count is: " +Total);
-
-				//updates results records with counts
-				var gr = new GlideRecord('x_inthe_eval_results');
-				gr.addQuery('evaluation',current.sys_id);
-				gr.addQuery('solution',solutionsArray[k]);
-				gr.addQuery('criterion',CriterionArray[l]);
-				gr.setValue('unable_to_rate',Total);
-				gr.updateMultiple();
-				l++;
-				}
-		}
-
-
-	//counts not met
-		for(k=0;k<solutionsArray.length;k++){
-			var l=0;
-			while(l<CriterionArray.length){
-				//lookup ratings that match solution and criterion and are not rated
-				var criTotal = new GlideRecord('x_inthe_eval_rating');
-				criTotal.addQuery('solution',solutionsArray[k]);
-				criTotal.addQuery('criterion',CriterionArray[l]);
-				criTotal.addQuery('rating','does_not_meet');
-				criTotal.query();
-				var Total = criTotal.getRowCount();
-				//gs.addInfoMessage("Ratings Row Count is: " +Total);
-
-				//updates results records with counts
-				var gr = new GlideRecord('x_inthe_eval_results');
-				gr.addQuery('evaluation',current.sys_id);
-				gr.addQuery('solution',solutionsArray[k]);
-				gr.addQuery('criterion',CriterionArray[l]);
-				gr.setValue('does_not_meet',Total);
-				gr.updateMultiple();
-				l++;
-				}
-		}
+	
 	//counts essential not met
 	
-	//counts fully met
-		for(k=0;k<solutionsArray.length;k++){
-			var l=0;
-			while(l<CriterionArray.length){
-				//lookup ratings that match solution and criterion and are not rated
-				var criTotal = new GlideRecord('x_inthe_eval_rating');
-				criTotal.addQuery('solution',solutionsArray[k]);
-				criTotal.addQuery('criterion',CriterionArray[l]);
-				criTotal.addQuery('rating','fully_meets');
-				criTotal.query();
-				var Total = criTotal.getRowCount();
-				//gs.addInfoMessage("Ratings Row Count is: " +Total);
-
-				//updates results records with counts
-				var gr = new GlideRecord('x_inthe_eval_results');
-				gr.addQuery('evaluation',current.sys_id);
-				gr.addQuery('solution',solutionsArray[k]);
-				gr.addQuery('criterion',CriterionArray[l]);
-				gr.setValue('fully_meets',Total);
-				gr.updateMultiple();
-				l++;
-				}
-		}
-	//counts partially met
-		for(k=0;k<solutionsArray.length;k++){
-			var l=0;
-			while(l<CriterionArray.length){
-				//lookup ratings that match solution and criterion and are not rated
-				var criTotal = new GlideRecord('x_inthe_eval_rating');
-				criTotal.addQuery('solution',solutionsArray[k]);
-				criTotal.addQuery('criterion',CriterionArray[l]);
-				criTotal.addQuery('rating','partially_meets');
-				criTotal.query();
-				var Total = criTotal.getRowCount();
-				//gs.addInfoMessage("Ratings Row Count is: " +Total);
-
-				//updates results records with counts
-				var gr = new GlideRecord('x_inthe_eval_results');
-				gr.addQuery('evaluation',current.sys_id);
-				gr.addQuery('solution',solutionsArray[k]);
-				gr.addQuery('criterion',CriterionArray[l]);
-				gr.setValue('partially_meets',Total);
-				gr.updateMultiple();
-				l++;
-				}
-		}
+	
+	
 	//counts essential partially met
 
 	//counts essential fully met
@@ -204,21 +164,21 @@ Compiles  results somewhere...</comments>
         <show_update>true</show_update>
         <sys_class_name>sys_ui_action</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
-        <sys_created_on>2017-06-29 19:17:11</sys_created_on>
+        <sys_created_on>2017-07-17 17:03:22</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
-        <sys_id>22f996d74fe3b240f5f3d49f0310c79d</sys_id>
-        <sys_mod_count>72</sys_mod_count>
-        <sys_name>**Complete Evaluation</sys_name>
+        <sys_id>d358e6414f0c8700af76d0af0310c7c6</sys_id>
+        <sys_mod_count>15</sys_mod_count>
+        <sys_name>**2 Complete Evaluation</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
-        <sys_update_name>sys_ui_action_22f996d74fe3b240f5f3d49f0310c79d</sys_update_name>
+        <sys_update_name>sys_ui_action_d358e6414f0c8700af76d0af0310c7c6</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-07-17 17:02:44</sys_updated_on>
+        <sys_updated_on>2017-07-17 18:20:51</sys_updated_on>
         <table>x_inthe_eval_evaluation</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>
