@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update>
-    <sys_dictionary action="INSERT_OR_UPDATE" element="not_rated" table="x_inthe_eval_results">
+    <sys_dictionary action="INSERT_OR_UPDATE" element="focus_area" table="x_inthe_eval_results">
         <active>true</active>
         <array>false</array>
-        <attributes>0=percent_complete_target,target_threshold_colors=0:khaki</attributes>
+        <attributes/>
         <audit>false</audit>
         <calculation>(function calculatedFieldValue(current) {
 
@@ -14,7 +14,7 @@
         <choice/>
         <choice_field/>
         <choice_table/>
-        <column_label>Not Rated</column_label>
+        <column_label>Focus Area</column_label>
         <comments/>
         <create_roles/>
         <default_value/>
@@ -27,18 +27,18 @@
         <dynamic_creation_script/>
         <dynamic_default_value/>
         <dynamic_ref_qual/>
-        <element>not_rated</element>
+        <element>focus_area</element>
         <element_reference>false</element_reference>
         <foreign_database/>
-        <internal_type display_value="">percent_complete</internal_type>
+        <internal_type display_value="Reference">reference</internal_type>
         <mandatory>false</mandatory>
-        <max_length>40</max_length>
+        <max_length>32</max_length>
         <name>x_inthe_eval_results</name>
         <next_element/>
         <primary>false</primary>
         <read_only>true</read_only>
         <read_roles/>
-        <reference/>
+        <reference display_value="" name="x_inthe_eval_focus_area">x_inthe_eval_focus_area</reference>
         <reference_cascade_rule/>
         <reference_floats>false</reference_floats>
         <reference_key/>
@@ -50,18 +50,18 @@
         <staged>false</staged>
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
-        <sys_created_on>2017-07-17 17:04:46</sys_created_on>
+        <sys_created_on>2017-07-17 21:26:20</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
-        <sys_id>49a866814f0c8700af76d0af0310c7fc</sys_id>
-        <sys_mod_count>2</sys_mod_count>
-        <sys_name>Not Rated</sys_name>
+        <sys_id>3374eb494f8c8700af76d0af0310c7d9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Focus Area</sys_name>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
-        <sys_update_name>sys_dictionary_x_inthe_eval_results_not_rated</sys_update_name>
+        <sys_update_name>sys_dictionary_x_inthe_eval_results_focus_area</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-07-17 18:49:28</sys_updated_on>
+        <sys_updated_on>2017-07-17 21:26:20</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

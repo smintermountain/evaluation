@@ -3,7 +3,7 @@
     <sys_dictionary action="INSERT_OR_UPDATE" element="partially_met" table="x_inthe_eval_results">
         <active>true</active>
         <array>false</array>
-        <attributes/>
+        <attributes>target_field=percent_complete_target,target_threshold_colors=0:khaki</attributes>
         <audit>false</audit>
         <calculation>(function calculatedFieldValue(current) {
 
@@ -53,7 +53,7 @@
         <sys_created_on>2017-07-17 17:04:04</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>b6782e414f0c8700af76d0af0310c7fb</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>Partially Met</sys_name>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
@@ -61,7 +61,7 @@
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_dictionary_x_inthe_eval_results_partially_met</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-07-17 17:04:04</sys_updated_on>
+        <sys_updated_on>2017-07-17 18:45:41</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

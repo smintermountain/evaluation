@@ -3,17 +3,31 @@
     <sys_ui_related sys_domain="global" table="x_inthe_eval_use_case" version="2" view="">
         <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
             <filter/>
-            <list_id display_value="Use Case - Default view" name="x_inthe_eval_use_case" related_list="NULL" sys_domain="global" view="Default view">1a7ec3164fa33240f5f3d49f0310c7e2</list_id>
+            <list_id display_value="Use Case - Default view" name="x_inthe_eval_use_case" related_list="NULL" sys_domain="global" view="Default view">954303854f4c8700af76d0af0310c7c4</list_id>
             <order_by/>
             <position>0</position>
             <related_list>x_inthe_eval_criterion.use_case</related_list>
             <sys_class_name>sys_ui_related_list_entry</sys_class_name>
             <sys_created_by>awyoung</sys_created_by>
-            <sys_created_on>2017-06-26 20:30:53</sys_created_on>
-            <sys_id>5e7ec3164fa33240f5f3d49f0310c7e2</sys_id>
+            <sys_created_on>2017-07-17 19:00:55</sys_created_on>
+            <sys_id>e94303854f4c8700af76d0af0310c7c4</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>awyoung</sys_updated_by>
-            <sys_updated_on>2017-06-26 20:30:53</sys_updated_on>
+            <sys_updated_on>2017-07-17 19:00:55</sys_updated_on>
+        </sys_ui_related_list_entry>
+        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
+            <filter/>
+            <list_id display_value="Use Case - Default view" name="x_inthe_eval_use_case" related_list="NULL" sys_domain="global" view="Default view">954303854f4c8700af76d0af0310c7c4</list_id>
+            <order_by/>
+            <position>1</position>
+            <related_list>x_inthe_eval_results.use_case</related_list>
+            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-07-17 19:00:55</sys_created_on>
+            <sys_id>ad4303854f4c8700af76d0af0310c7c4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-07-17 19:00:55</sys_updated_on>
         </sys_ui_related_list_entry>
         <sys_ui_related_list action="INSERT_OR_UPDATE">
             <calculated_name>Use Case - Default view</calculated_name>
@@ -24,11 +38,11 @@
             <related_list/>
             <sys_class_name>sys_ui_related_list</sys_class_name>
             <sys_created_by>awyoung</sys_created_by>
-            <sys_created_on>2017-06-26 20:30:53</sys_created_on>
-            <sys_customer_update>false</sys_customer_update>
+            <sys_created_on>2017-07-17 19:00:55</sys_created_on>
+            <sys_customer_update>true</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>1a7ec3164fa33240f5f3d49f0310c7e2</sys_id>
+            <sys_id>954303854f4c8700af76d0af0310c7c4</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>Use Case - Default view</sys_name>
             <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -37,7 +51,7 @@
             <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
             <sys_update_name>sys_ui_related_x_inthe_eval_use_case_null</sys_update_name>
             <sys_updated_by>awyoung</sys_updated_by>
-            <sys_updated_on>2017-06-26 20:30:53</sys_updated_on>
+            <sys_updated_on>2017-07-17 19:00:55</sys_updated_on>
             <sys_user/>
             <view display_value="Default view" name="NULL">Default view</view>
             <view_name/>

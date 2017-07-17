@@ -6,7 +6,6 @@
         <client>false</client>
         <comments>Checks all child ratings for completeness&#13;
 Changes child states to complete&#13;
---Criteria, Use Case&#13;
 Changes evaluation state to complete&#13;
 Compiles  results somewhere...</comments>
         <condition>current.state=='scoring'</condition>
@@ -22,29 +21,58 @@ Compiles  results somewhere...</comments>
         <list_context_menu>false</list_context_menu>
         <list_link>false</list_link>
         <list_save_with_form_button>false</list_save_with_form_button>
-        <name>**2 Complete Evaluation</name>
+        <name>Complete Evaluation</name>
         <onclick/>
         <order>100</order>
         <script><![CDATA[//check child ratings
+var ratingsArray = [];
+var ratingsPresentArray = [];
+var grRating = new GlideRecord('x_inthe_eval_rating');
+grRating.addQuery('evaluation',current.sys_id);
+grRating.addQuery('rating','');
+grRating.query();
+var emptyRating = grRating.getRowCount();
+if (emptyRating != 0){
+//if rating is not complete give the user an error
+	gs.addErrorMessage("Not all ratings have been submitted. Please have evaluators complete their ratings before continuing.");
+}
+else{
+	//Mark child ratings as complete
+	var grChildRatings = new GlideRecord('x_inthe_eval_rating');
+	grChildRatings.addQuery('evaluation',current.sys_id);
+	grChildRatings.query();
+	grChildRatings.setValue('state','complete');
+	grChildRatings.updateMultiple();	
+	
+	//Mark child Use Cases as complete
+	var grChildUC = new GlideRecord('x_inthe_eval_use_case');
+	grChildUC.addQuery('evaluation',current.sys_id);
+	grChildUC.query();
+	grChildUC.setValue('state','complete');
+	grChildUC.updateMultiple();	
+	
+	//Mark child Criteria as complete
+	var grChildCri = new GlideRecord('x_inthe_eval_criterion');
+	grChildCri.addQuery('evaluation',current.sys_id);
+	grChildCri.query();
+	grChildCri.setValue('state','complete');
+	grChildCri.updateMultiple();	
+	
+	//Mark child Solutions as complete
+	var grChildSol = new GlideRecord('x_inthe_eval_solution');
+	grChildSol.addQuery('evaluation',current.sys_id);
+	grChildSol.query();
+	grChildSol.setValue('state','complete');
+	grChildSol.updateMultiple();	
+	
+	//Mark child Score Cards as complete
+	var grChildSC = new GlideRecord('x_inthe_eval_score_card');
+	grChildSC.addQuery('evaluation',current.sys_id);
+	grChildSC.query();
+	grChildSC.setValue('state','complete');
+	grChildSC.updateMultiple();
 
-//changes child criteria state to complete
-
-//changes child use cases to complete
-
-//changes evaluation state to complete
-
-//SOLUTIONS COUNTS
-	//variables and arrays
-		//get array of use cases - j
-		var useCaseArray = [];
-		grUseCase = new GlideRecord('x_inthe_eval_use_case');
-		grUseCase.addQuery('evaluation',current.sys_id);
-		grUseCase.query();
-		while (grUseCase.next()){
-			useCaseArray.push(grUseCase.sys_id+'');
-		}
-		//gs.addInfoMessage("Use Case array is: "+useCaseArray.toString());
-		
+	//Perform calculation of scores
 		//get array of solutions - k
 		var solutionsArray = [];
 		grSolutions = new GlideRecord('x_inthe_eval_solution');
@@ -58,16 +86,20 @@ Compiles  results somewhere...</comments>
 
 		//get array of criterion - l
 		var CriterionArray = [];
+		var useCaseArray = [];
+		var focusAreaArray = [];
 		grCriterion = new GlideRecord('x_inthe_eval_criterion');
 		grCriterion.addQuery('evaluation',current.sys_id);
 		grCriterion.query();
 		while (grCriterion.next()){
 			CriterionArray.push(grCriterion.sys_id+'');
+			useCaseArray.push(grCriterion.use_case.sys_id+'');
+			focusAreaArray.push(grCriterion.focus_area.sys_id+'');
 		}
 		//gs.addInfoMessage("Criterion array is: "+CriterionArray.toString());
 		//gs.addInfoMessage("Criterion array count is " +CriterionArray.length);
 		
-	//Creates initial results record with ratings count
+	//Looks up ratings records and counts their values, then posts to results records
 		//for each solution
 		for(k=0;k<solutionsArray.length;k++){
 			var l=0;
@@ -98,9 +130,9 @@ Compiles  results somewhere...</comments>
 				does_not_meet.addQuery('rating','does_not_meet');
 				does_not_meet.query();
 				var doesNotMeet = does_not_meet.getRowCount();
-				gs.addInfoMessage('Does not meet is: '+doesNotMeet);
+				//gs.addInfoMessage('Does not meet is: '+doesNotMeet);
 				var NotMet = (doesNotMeet/Total)*100;
-				gs.addInfoMessage("Not Met is: " +NotMet);
+				//gs.addInfoMessage("Not Met is: " +NotMet);
 				
 				//lookup ratings that match solution and criterion and FULLY MET
 				var fully_meets = new GlideRecord('x_inthe_eval_rating');
@@ -120,7 +152,7 @@ Compiles  results somewhere...</comments>
 				partially_meets.query();
 				var partiallyMeets = partially_meets.getRowCount();
 				var PartiallyMet = (partiallyMeets/Total)*100;
-				gs.addInfoMessage("Partially Met is: " +PartiallyMet);
+				//gs.addInfoMessage("Partially Met is: " +PartiallyMet);
 				
 				//create new results records for each solution and criterion
 				var gr = new GlideRecord('x_inthe_eval_results');
@@ -128,6 +160,8 @@ Compiles  results somewhere...</comments>
 				gr.evaluation=current.sys_id;
 				gr.solution=solutionsArray[k];
 				gr.criterion=CriterionArray[l];
+				gr.use_case=useCaseArray[l];
+				gr.focus_area=focusAreaArray[l];
 				gr.ratings=Total;
 				gr.unable_to_rate=unableToRate;
 				gr.not_rated=NotRated;
@@ -141,23 +175,15 @@ Compiles  results somewhere...</comments>
 				l++;
 				}
 		}
-
+//Mark current record as complete
+	var grCurrent = new GlideRecord('x_inthe_eval_evaluation');
+	grCurrent.addQuery('sys_id',current.sys_id);
+	grCurrent.query();
+	grCurrent.setValue('state','complete');
+	grCurrent.updateMultiple();	
 	
-
-	
-	//counts essential not met
-	
-	
-	
-	//counts essential partially met
-
-	//counts essential fully met
-
-	//adds counts for total variables
-
-
-//sets form values (percentages)
-	//fully met]]></script>
+}
+action.setRedirectURL(current);]]></script>
         <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
@@ -169,8 +195,8 @@ Compiles  results somewhere...</comments>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>d358e6414f0c8700af76d0af0310c7c6</sys_id>
-        <sys_mod_count>15</sys_mod_count>
-        <sys_name>**2 Complete Evaluation</sys_name>
+        <sys_mod_count>23</sys_mod_count>
+        <sys_name>Complete Evaluation</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
@@ -178,7 +204,7 @@ Compiles  results somewhere...</comments>
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_ui_action_d358e6414f0c8700af76d0af0310c7c6</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-07-17 18:20:51</sys_updated_on>
+        <sys_updated_on>2017-07-17 21:26:51</sys_updated_on>
         <table>x_inthe_eval_evaluation</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>
