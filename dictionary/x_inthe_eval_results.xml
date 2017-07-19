@@ -6,7 +6,7 @@
         <element label="Evaluation" max_length="32" name="evaluation" read_only="true" reference="x_inthe_eval_evaluation" type="reference"/>
         <element label="Focus Area" max_length="32" name="focus_area" read_only="true" reference="x_inthe_eval_focus_area" type="reference"/>
         <element label="Fully Meets" max_length="20" name="fully_meets" read_only="true" type="integer"/>
-        <element attributes="100=percent_complete_target,target_threshold_colors=0:lightgreen" label="Fully Met" max_length="40" name="fully_met" read_only="true" type="percent_complete"/>
+        <element attributes="target_field=percent_complete_target,target_threshold_colors=0:lightgreen" label="Fully Met" max_length="40" name="fully_met" read_only="true" type="percent_complete"/>
         <element attributes="0=percent_complete_target,target_threshold_colors=0:tomato" label="Not Met" max_length="40" name="not_met" read_only="true" type="percent_complete"/>
         <element attributes="0=percent_complete_target,target_threshold_colors=0:khaki" label="Not Rated" max_length="40" name="not_rated" read_only="true" type="percent_complete"/>
         <element default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" read_only="true" type="string"/>
