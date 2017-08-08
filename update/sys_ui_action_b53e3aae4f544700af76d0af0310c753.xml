@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_ui_action">
+    <sys_ui_action action="INSERT_OR_UPDATE">
+        <action_name/>
+        <active>false</active>
+        <client>false</client>
+        <comments/>
+        <condition/>
+        <form_action>true</form_action>
+        <form_button>true</form_button>
+        <form_context_menu>false</form_context_menu>
+        <form_link>false</form_link>
+        <hint/>
+        <list_action>false</list_action>
+        <list_banner_button>false</list_banner_button>
+        <list_button>false</list_button>
+        <list_choice>false</list_choice>
+        <list_context_menu>false</list_context_menu>
+        <list_link>false</list_link>
+        <list_save_with_form_button>false</list_save_with_form_button>
+        <name>Combine Evaluators</name>
+        <onclick/>
+        <order>100</order>
+        <script><![CDATA[var UCEvaluators = [];
+var evalEvaluators = current.additional_evaluators.split(",");
+var allEvaluators = evalEvaluators;
+
+//get users from child use case records and add to array if not duplicate
+var grEvalUC = new GlideRecord('x_inthe_eval_use_case');
+grEvalUC.addQuery('evaluation', current.sys_id);
+grEvalUC.query();
+while (grEvalUC.next()){
+	var evalUsers = grEvalUC.evaluators.split(",");
+	for (h=0;h<evalUsers.length;h++){
+		var ucDupe = [];
+		for (i=0;i<allEvaluators.length;i++){
+			//gs.addInfoMessage(evalUsers[h] + " compared to " + allEvaluators[i]);
+			if (evalUsers[h] != allEvaluators[i]){
+				var duplicate = false;
+				//gs.addInfoMessage("Duplicate: "+duplicate);
+				ucDupe.push(duplicate+'');
+				}
+			if (evalUsers[h] == allEvaluators[i]){
+				var duplicate = true;
+				//gs.addInfoMessage("Duplicate: "+duplicate);
+				ucDupe.push(duplicate+'');
+			}
+		//gs.addInfoMessage("Dupes list is: " +ucDupe);
+		}
+		var ucDupeString = ucDupe.toString();
+		if (ucDupeString.contains(true)){
+			//gs.addInfoMessage('Duplicate user skipped');
+		}
+		else {
+			//gs.addInfoMessage('Unique user added: ' + evalUsers[h]);
+			allEvaluators.push(evalUsers[h]);
+			}
+	}
+}
+
+//set evaluators field to all evaluators
+var gr = new GlideRecord('x_inthe_eval_evaluation');
+		gr.addQuery('sys_id', current.sys_id);
+		gr.query();
+		gr.setValue('evaluators', allEvaluators.toString());
+		gr.updateMultiple();
+
+//gs.addInfoMessage('All users list is: ' +allEvaluators.toString());
+setRedirectURL(current);]]></script>
+        <show_insert>true</show_insert>
+        <show_multiple_update>false</show_multiple_update>
+        <show_query>false</show_query>
+        <show_update>true</show_update>
+        <sys_class_name>sys_ui_action</sys_class_name>
+        <sys_created_by>awyoung</sys_created_by>
+        <sys_created_on>2017-08-03 20:46:38</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>b53e3aae4f544700af76d0af0310c753</sys_id>
+        <sys_mod_count>46</sys_mod_count>
+        <sys_name>Combine Evaluators</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
+        <sys_update_name>sys_ui_action_b53e3aae4f544700af76d0af0310c753</sys_update_name>
+        <sys_updated_by>awyoung</sys_updated_by>
+        <sys_updated_on>2017-08-08 20:03:56</sys_updated_on>
+        <table>x_inthe_eval_evaluation</table>
+        <ui11_compatible>true</ui11_compatible>
+        <ui16_compatible>true</ui16_compatible>
+    </sys_ui_action>
+</record_update>

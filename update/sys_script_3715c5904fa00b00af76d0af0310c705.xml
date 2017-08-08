@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_inthe_eval_solution</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>SET Solution - Create Role Group</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+//solution group
+	var newSolution = new GlideRecord('sys_user_group');
+	newSolution.name = current.number+"_user";
+	newSolution.description = "Auto-generated role group for the Solution Evaluation Tool.";
+	newSolution.manager = current.evaluation.administrator.sys_id;
+	newSolution.insert();
+	//return sys ID from glide record group creation
+	
+	var newSolutionRole = new GlideRecord('sys_group_has_role');
+	newSolutionRole.group = '';
+	//need sys id of group from above
+	newSolutionRole.role = 'x_inthe_eval.user';
+	newSolutionRole.inherits = true;
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>awyoung</sys_created_by>
+        <sys_created_on>2017-08-08 22:26:27</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>3715c5904fa00b00af76d0af0310c705</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>SET Solution - Create Role Group</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
+        <sys_update_name>sys_script_3715c5904fa00b00af76d0af0310c705</sys_update_name>
+        <sys_updated_by>awyoung</sys_updated_by>
+        <sys_updated_on>2017-08-08 22:26:27</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=3715c5904fa00b00af76d0af0310c705"/>
+</record_update>
