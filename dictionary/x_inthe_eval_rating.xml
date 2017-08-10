@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <element label="Rating" max_length="40" name="x_inthe_eval_rating" type="collection">
+        <element label="Comments" max_length="1000" name="comments" type="string"/>
         <element display="true" label="Criterion" max_length="32" name="criterion" read_only="true" reference="x_inthe_eval_criterion" type="reference"/>
         <element label="Evaluator" max_length="32" name="evaluator" read_only="true" reference="sys_user" type="reference"/>
         <element default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" read_only="true" type="string"/>

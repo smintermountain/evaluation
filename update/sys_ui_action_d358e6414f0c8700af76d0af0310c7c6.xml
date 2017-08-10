@@ -8,7 +8,7 @@
 Changes child states to complete&#13;
 Changes evaluation state to complete&#13;
 Compiles  results somewhere...</comments>
-        <condition>current.state=='scoring'</condition>
+        <condition>(current.state=='scoring')&amp;&amp;(current.administrator==gs.getUserID()||gs.hasRole('x_inthe_eval.admin'))</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
         <form_context_menu>false</form_context_menu>
@@ -195,7 +195,7 @@ action.setRedirectURL(current);]]></script>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>d358e6414f0c8700af76d0af0310c7c6</sys_id>
-        <sys_mod_count>23</sys_mod_count>
+        <sys_mod_count>24</sys_mod_count>
         <sys_name>Complete Evaluation</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -204,7 +204,7 @@ action.setRedirectURL(current);]]></script>
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_ui_action_d358e6414f0c8700af76d0af0310c7c6</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-07-17 21:26:51</sys_updated_on>
+        <sys_updated_on>2017-08-10 18:30:43</sys_updated_on>
         <table>x_inthe_eval_evaluation</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

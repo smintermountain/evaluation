@@ -4,10 +4,9 @@
         <action_name/>
         <active>true</active>
         <client>false</client>
-        <comments>Prompts user to confirm&#13;
-Checks all child criteria for completeness&#13;
+        <comments>Checks all child criteria for completeness&#13;
 Updates child criteria state to final</comments>
-        <condition>current.state=='in_progress'</condition>
+        <condition>(current.state == 'in_progress')&amp;&amp;(current.use_case_leader==gs.getUserID()||gs.hasRole('x_inthe_eval.admin')||gs.hasRole('x_inthe_eval.eval_admin'))</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
         <form_context_menu>false</form_context_menu>
@@ -48,6 +47,7 @@ for (i=0;i<criArray.length;i++){
 criPresentArrayString = criPresentArray.toString();
 if(criPresentArrayString.includes('false')){
 	gs.addErrorMessage("Not all criteria have been completed. Please complete required fields for each criterion before continuing.");
+	action.setRedirectURL(current);
 }
 else{
 	//Mark current use case as Final
@@ -62,9 +62,9 @@ else{
 	grCurrent.addQuery('use_case',current.sys_id);
 	grCurrent.query();
 	grCurrent.setValue('state','final');
-	grCurrent.updateMultiple();	
-}
-action.setRedirectURL(current);]]></script>
+	grCurrent.updateMultiple();
+	action.setRedirectURL('x_inthe_eval_evaluation.do?sys_id='+current.evaluation.sys_id);
+}]]></script>
         <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
@@ -76,7 +76,7 @@ action.setRedirectURL(current);]]></script>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>49dff7664f6f3240f5f3d49f0310c745</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>17</sys_mod_count>
         <sys_name>Finalize Use Case</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -85,7 +85,7 @@ action.setRedirectURL(current);]]></script>
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_ui_action_49dff7664f6f3240f5f3d49f0310c745</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-07-12 23:35:56</sys_updated_on>
+        <sys_updated_on>2017-08-10 22:41:52</sys_updated_on>
         <table>x_inthe_eval_use_case</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

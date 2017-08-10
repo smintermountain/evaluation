@@ -5,14 +5,14 @@
         <admin_overrides>true</admin_overrides>
         <advanced>true</advanced>
         <condition/>
-        <description>Default access control on x_inthe_eval_rating</description>
+        <description>Allow write for records in x_inthe_eval_rating, for users with role x_inthe_eval.user, and if the ACL script returns true.</description>
         <name>x_inthe_eval_rating</name>
         <operation display_value="write">write</operation>
         <script><![CDATA[var user = gs.getUser();
 if(user.hasRole('x_inthe_eval.admin') == true || user.hasRole('x_inthe_eval.eval_admin') == true){
 	var answer = true;
 }
-if (user.hasRole('x_inthe_eval.evaluator') && current.evaluator == gs.getUserID()){
+if (current.evaluator == gs.getUserID()){
 	var answer = true;
 }
 else{
@@ -23,7 +23,7 @@ else{
         <sys_created_on>2017-06-26 18:14:32</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>1d4fee9e4f233240f5f3d49f0310c798</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>x_inthe_eval_rating</sys_name>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
@@ -31,7 +31,7 @@ else{
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_security_acl_1d4fee9e4f233240f5f3d49f0310c798</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-08-03 20:34:39</sys_updated_on>
+        <sys_updated_on>2017-08-10 18:16:24</sys_updated_on>
         <type display_value="record">record</type>
     </sys_security_acl>
 </record_update>

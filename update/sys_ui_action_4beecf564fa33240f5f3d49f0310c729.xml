@@ -5,7 +5,7 @@
         <active>true</active>
         <client>false</client>
         <comments/>
-        <condition>current.state == 'new'||current.state == 'in_progress'</condition>
+        <condition>(current.state == 'new'||current.state == 'in_progress')&amp;&amp;(current.evaluators.contains(gs.getUserID())||current.use_case_leader==gs.getUserID()||gs.hasRole('x_inthe_eval.admin')||gs.hasRole('x_inthe_eval.eval_admin'))</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
         <form_context_menu>false</form_context_menu>
@@ -28,6 +28,13 @@
 	grCopy.focus_area = current.focus_area;
 	grCopy.use_case = current.sys_id;
 	var newCriterionID = grCopy.insert();
+
+//Mark current use case as in progress
+	var grCurrent = new GlideRecord('x_inthe_eval_use_case');
+	grCurrent.addQuery('sys_id',current.sys_id);
+	grCurrent.query();
+	grCurrent.setValue('state','in_progress');
+	grCurrent.updateMultiple();	
 	
 	gs.addInfoMessage("This criterion will be attached to the " + current.name + " use case.");
 	action.setRedirectURL(grCopy);
@@ -46,7 +53,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>4beecf564fa33240f5f3d49f0310c729</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>Create Criterion</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -55,7 +62,7 @@
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_ui_action_4beecf564fa33240f5f3d49f0310c729</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-07-11 17:33:38</sys_updated_on>
+        <sys_updated_on>2017-08-10 20:44:40</sys_updated_on>
         <table>x_inthe_eval_use_case</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

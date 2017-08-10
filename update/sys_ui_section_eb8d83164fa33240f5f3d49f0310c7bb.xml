@@ -113,6 +113,20 @@
             <sys_user/>
             <type/>
         </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>comments</element>
+            <position>8</position>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-08-10 18:14:20</sys_created_on>
+            <sys_id>c9ced2744fe04b00af76d0af0310c7cd</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_inthe_eval_rating" sys_domain="global" view="Default view">eb8d83164fa33240f5f3d49f0310c7bb</sys_ui_section>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-08-10 18:14:20</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
         <sys_ui_section action="INSERT_OR_UPDATE">
             <caption/>
             <header>false</header>
@@ -125,7 +139,7 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>eb8d83164fa33240f5f3d49f0310c7bb</sys_id>
-            <sys_mod_count>2</sys_mod_count>
+            <sys_mod_count>3</sys_mod_count>
             <sys_name>x_inthe_eval_rating</sys_name>
             <sys_overrides/>
             <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -134,7 +148,7 @@
             <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
             <sys_update_name>sys_ui_section_eb8d83164fa33240f5f3d49f0310c7bb</sys_update_name>
             <sys_updated_by>awyoung</sys_updated_by>
-            <sys_updated_on>2017-07-17 16:49:18</sys_updated_on>
+            <sys_updated_on>2017-08-10 18:14:20</sys_updated_on>
             <sys_user/>
             <title>true</title>
             <view display_value="Default view" name="NULL">Default view</view>

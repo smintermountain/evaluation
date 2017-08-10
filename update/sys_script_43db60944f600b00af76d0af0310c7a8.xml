@@ -29,50 +29,82 @@
         <rest_variables/>
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
-
+	var parentSysID = '';
+	var evalAdminSysID = '';
+	var addEvalSysID = '';
+	var userSysID = '';
+	
+//create parent users group
+	var newParent = new GlideRecord('sys_user_group');
+	newParent.initialize();
+	newParent.name = current.number+"_Users";
+	newParent.description = "DO NOT DELETE. Auto-generated role group for Solution Evaluation "+current.number;
+	newParent.manager = current.administrator;
+	newParent.insert();
+	parentSysID = newParent.sys_id;
+	
+		
+	var newParentRole = new GlideRecord('sys_group_has_role');
+	newParentRole.group = parentSysID;
+	newParentRole.role = '2e8837054fc0c700f5f3d49f0310c78a';
+	newParentRole.inherits = false;
+	
+//record parent group on enhancement record
+	var setParent = new GlideRecord('x_inthe_eval_evaluation');
+	setParent.addQuery('sys_id',current.sys_id);
+	setParent.query();
+	setParent.role_group = parentSysID;
+	setParent.updateMultiple();
+	
+/*
 //evaluation administrator group
 	var newEvalAdmin = new GlideRecord('sys_user_group');
+	newEvalAdmin.initialize();
 	newEvalAdmin.name = current.number+"_eval_admin";
-	newEvalAdmin.description = "Auto-generated role group for the Solution Evaluation Tool.";
-	newEvalAdmin.manager = current.administrator.sys_id;
+	newEvalAdmin.description = "DO NOT DELETE. Auto-generated role group for Solution Evaluation "+current.number;
+	newEvalAdmin.manager = current.administrator;
+	newEvalAdmin.parent = parentSysID;
 	newEvalAdmin.insert();
-	//return sys ID from glide record group creation
+	evalAdminSysID = newEvalAdmin.sys_id;
 	
 	var evalAdmin = new GlideRecord('sys_group_has_role');
-	evalAdmin.group = '';
-	//need sys id of group from above
-	evalAdmin.role = 'x_inthe_eval.eval_admin';
+	evalAdmin.group = evalAdminSysID;
+	evalAdmin.role = '9aec09cb4f6f3e40af76d0af0310c7c8';
 	evalAdmin.inherits = true;
 	
 
 //additional evaluators group
 	var newAddEvals = new GlideRecord('sys_user_group');
-	newAddEvals.name = current.number+"_evaluators";
-	newAddEvals.description = "Auto-generated role group for the Solution Evaluation Tool.";
-	newAddEvals.manager = current.administrator.sys_id;
+	newAddEvals.initialize();
+	newAddEvals.name = current.number+"_eval_evaluators";
+	newAddEvals.description = "DO NOT DELETE. Auto-generated role group for Solution Evaluation "+current.number;
+	newAddEvals.manager = current.administrator;
+	newAddEvals.parent = parentSysID;
 	newAddEvals.insert();
-	//return sys ID from glide record group creation
+	addEvalSysID = newAddEvals.sys_id;
 	
 	var addEvalsRole = new GlideRecord('sys_group_has_role');
-	addEvalsRole.group = '';
-	//need sys id of group from above
-	addEvalsRole.role = 'x_inthe_eval.evaluator';
+	addEvalsRole.group = addEvalSysID;
+	addEvalsRole.role = '609c45cb4f6f3e40af76d0af0310c73a';
 	addEvalsRole.inherits = true;
 
 
 //evaluation users group
-	var newUsers = new GlideRecord('sys_user_group');
-	newUsers.name = current.number+"_users";
-	newUsers.description = "Auto-generated role group for the Solution Evaluation Tool.";
+
+var newUsers = new GlideRecord('sys_user_group');
+	newUsers.initialize();
+	newUsers.name = current.number+"_eval_users";
+	newUsers.description = "DO NOT DELETE. Auto-generated role group for Solution Evaluation "+current.number;
 	newUsers.manager = current.administrator.sys_id;
+	newUsers.parent = parentSysID;
 	newUsers.insert();
-	//return sys ID from glide record group creation
+	userSysID = newUsers.sys_id;
 	
 	var newUsersRole = new GlideRecord('sys_group_has_role');
-	newUsersRole.group = '';
-	//need sys id of group from above
-	newUsersRole.role = 'x_inthe_eval.user';
+	newUsersRole.group = userSysID;
+	newUsersRole.role = '2e8837054fc0c700f5f3d49f0310c78a';
 	newUsersRole.inherits = true;
+*/
 	
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
@@ -82,7 +114,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>43db60944f600b00af76d0af0310c7a8</sys_id>
-        <sys_mod_count>11</sys_mod_count>
+        <sys_mod_count>26</sys_mod_count>
         <sys_name>SET Evaluation - Create Role Groups</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -91,7 +123,7 @@
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_script_43db60944f600b00af76d0af0310c7a8</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-08-08 22:32:18</sys_updated_on>
+        <sys_updated_on>2017-08-10 15:49:57</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>
