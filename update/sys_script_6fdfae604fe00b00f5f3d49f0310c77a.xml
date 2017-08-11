@@ -35,22 +35,23 @@
 	var parentGroup = current.evaluation.role_group;	
 
 //add users to master role group
-	var existing = new GlideRecord('sys_user_grmember');
-	existing.addQuery('group',parentGroup);
-	existing.addQuery('user',user);
-	existing.query();
-	if(existing.getRowCount() == 0){
-		var add = new GlideRecord('sys_user_grmember');
-		add.initialize();
-		add.user = user;
-		add.group = parentGroup;
-		add.insert();
-		//gs.addInfoMessage('Added user '+users[j]);
+	if(user!=''){
+		var existing = new GlideRecord('sys_user_grmember');
+		existing.addQuery('group',parentGroup);
+		existing.addQuery('user',user);
+		existing.query();
+		if(existing.getRowCount() == 0){
+			var add = new GlideRecord('sys_user_grmember');
+			add.initialize();
+			add.user = user;
+			add.group = parentGroup;
+			add.insert();
+			//gs.addInfoMessage('Added user '+users[j]);
+		}
+		else{
+			//gs.addInfoMessage('User already exists.');
+		}
 	}
-	else{
-		//gs.addInfoMessage('User already exists.');
-	}
-	
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
@@ -59,7 +60,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>6fdfae604fe00b00f5f3d49f0310c77a</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>SET Solution - Users - Primary Contact</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -68,7 +69,7 @@
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_script_6fdfae604fe00b00f5f3d49f0310c77a</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-08-10 17:24:57</sys_updated_on>
+        <sys_updated_on>2017-08-11 15:32:45</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>

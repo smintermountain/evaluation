@@ -40,7 +40,9 @@
 	var parentGroup = current.evaluation.role_group;
 	
 //get a list of all new users into an array
-	users.push(current.use_case_leader);
+	if(current.use_case_leader!=''){
+		users.push(current.use_case_leader);
+	}
 	for(i=0;i<evaluators.length;i++){
 		users.push(evaluators[i]+'');
 	}
@@ -74,7 +76,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>163a6eec4fa00b00f5f3d49f0310c777</sys_id>
-        <sys_mod_count>36</sys_mod_count>
+        <sys_mod_count>37</sys_mod_count>
         <sys_name>SET Use Case - Users - Evaluators</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -83,7 +85,7 @@
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_script_163a6eec4fa00b00f5f3d49f0310c777</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-08-10 20:20:11</sys_updated_on>
+        <sys_updated_on>2017-08-11 15:29:27</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>
