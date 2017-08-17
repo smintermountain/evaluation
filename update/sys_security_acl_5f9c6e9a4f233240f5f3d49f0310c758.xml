@@ -5,28 +5,37 @@
         <admin_overrides>true</admin_overrides>
         <advanced>true</advanced>
         <condition/>
-        <description>Default access control on x_inthe_eval_criterion</description>
+        <description>parent users</description>
         <name>x_inthe_eval_criterion</name>
         <operation display_value="create">create</operation>
-        <script><![CDATA[if(current.use_case.evaluators.contains(gs.getUserID())){
+        <script><![CDATA[var user = gs.getUserID();
+var answer = false;
+if(parent.evaluation.administrator == user){
+	answer = true;
+}
+if(parent.evaluation.additional_evaluators.contains(gs.getUserID())){
+	answer = true;
+}
+if(parent.evaluation.architect == user){
+	answer = true;
+}
+if(parent.evaluation.solutions_manager == user){
+	answer = true;
+}
+if(parent.use_case_leader == user){
+	answer = true;
+}
+if(parent.evaluators.contains(user)){
 	answer = true;
 }
 else{
-	if(user.hasRole('x_inthe_eval.admin') || user.hasRole('x_inthe_eval.eval_admin') || user.hasRole('x_inthe_eval.uc_lead')){
-		var answer = true;
-	}
-	else{
-		answer = false;
-	}
-}
-
-]]></script>
+}]]></script>
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-26 18:02:56</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>5f9c6e9a4f233240f5f3d49f0310c758</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>x_inthe_eval_criterion</sys_name>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
@@ -34,7 +43,7 @@ else{
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_security_acl_5f9c6e9a4f233240f5f3d49f0310c758</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-08-10 17:58:32</sys_updated_on>
+        <sys_updated_on>2017-08-17 00:21:21</sys_updated_on>
         <type display_value="record">record</type>
     </sys_security_acl>
 </record_update>

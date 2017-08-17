@@ -2,29 +2,27 @@
 <record_update table="sys_security_acl">
     <sys_security_acl action="INSERT_OR_UPDATE">
         <active>true</active>
-        <admin_overrides>true</admin_overrides>
+        <admin_overrides>false</admin_overrides>
         <advanced>false</advanced>
-        <condition table="x_inthe_eval_score_card">evaluatorDYNAMIC90d1921e5f510100a9ad2572f2b477fe^EQ<item endquery="false" field="evaluator" goto="false" newquery="false" operator="DYNAMIC" or="false" value="90d1921e5f510100a9ad2572f2b477fe"/>
-            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
-        </condition>
-        <description>assigned user</description>
+        <condition/>
+        <description>app admin</description>
         <name>x_inthe_eval_score_card</name>
         <operation display_value="write">write</operation>
         <script/>
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
-        <sys_created_on>2017-06-26 18:10:29</sys_created_on>
+        <sys_created_on>2017-08-17 00:35:38</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
-        <sys_id>395ee65e4f233240f5f3d49f0310c7fb</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_id>099f2af64f6c0f00af76d0af0310c76e</sys_id>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>x_inthe_eval_score_card</sys_name>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
-        <sys_update_name>sys_security_acl_395ee65e4f233240f5f3d49f0310c7fb</sys_update_name>
+        <sys_update_name>sys_security_acl_099f2af64f6c0f00af76d0af0310c76e</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-08-17 00:35:19</sys_updated_on>
+        <sys_updated_on>2017-08-17 00:35:58</sys_updated_on>
         <type display_value="record">record</type>
     </sys_security_acl>
 </record_update>

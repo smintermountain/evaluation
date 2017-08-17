@@ -3,7 +3,7 @@
     <sys_ui_action action="INSERT_OR_UPDATE">
         <action_name/>
         <active>true</active>
-        <client>false</client>
+        <client>true</client>
         <comments/>
         <condition>(current.state == 'new'||current.state == 'in_progress')&amp;&amp;(current.evaluators.contains(gs.getUserID())||current.use_case_leader==gs.getUserID()||gs.hasRole('x_inthe_eval.admin')||gs.hasRole('x_inthe_eval.eval_admin'))</condition>
         <form_action>true</form_action>
@@ -18,29 +18,40 @@
         <list_context_menu>false</list_context_menu>
         <list_link>false</list_link>
         <list_save_with_form_button>false</list_save_with_form_button>
-        <name>Create Criterion</name>
-        <onclick/>
+        <name>Create Criterion 2</name>
+        <onclick>openFormDialog()</onclick>
         <order>100</order>
-        <script><![CDATA[try {
-	var grCopy = new GlideRecord("x_inthe_eval_criterion");
-	grCopy.initialize();
-	grCopy.evaluation = current.evaluation;
-	grCopy.focus_area = current.focus_area;
-	grCopy.use_case = current.sys_id;
-	var newCriterionID = grCopy.insert();
-
-//Mark current use case as in progress
-	var grCurrent = new GlideRecord('x_inthe_eval_use_case');
-	grCurrent.addQuery('sys_id',current.sys_id);
-	grCurrent.query();
-	grCurrent.setValue('state','in_progress');
-	grCurrent.updateMultiple();	
-	
-	//gs.addInfoMessage("This criterion will be attached to the " + current.name + " use case.");
-	action.setRedirectURL(grCopy);
-	action.setReturnURL(current);
-} catch(e) {
-	gs.error("Error in UI Action 'Copy' on line #{0}: {1}",e.lineNumber,e.message);
+        <script><![CDATA[function openFormDialog(){
+    var sysId;
+    if (typeof rowSysId == 'undefined')
+        sysId = gel('sys_uniqueValue').value;
+    else
+        sysId = rowSysId;
+	Utility.getInstance().showBackground(document.body, 999, "");
+    var values = {};
+    values["evaluation"] = g_form.getValue('evaluation');
+	values["focus_area"] = g_form.getValue("focus_area");
+	values["use_case"] = sysId;
+    new FormDialogDefinition(null, "x_inthe_eval_criterion", $("x_inthe_eval_criterion.form_scroll"), "default", "true").setAfterCloseCallback(function(action_verb, sys_id, updated_table, display_value){ 
+        var gr = new GlideRecord("x_inthe_eval_criterion");
+        gr.addQuery("sys_id", sys_id);
+        gr.query();
+        if (gr.next()){
+            gr.sys_id = sysId;
+			//got to here
+            gr.update(function(){
+                Utility.getInstance().hideBackground("");
+                if (GlideList2.get("rm_enhancement.rm_story.enhancement"))
+                    GlideList2.get("rm_enhancement.rm_story.enhancement").refresh();
+            });
+        } else {
+            Utility.getInstance().hideBackground("");
+            if (GlideList2.get("rm_enhancement.rm_story.enhancement"))
+                GlideList2.get("rm_enhancement.rm_story.enhancement").refresh();
+        }
+    }).setCloseCallback(function(){
+        Utility.getInstance().hideBackground("");
+    }).open(null, "enhancement", sysId, values);
 }]]></script>
         <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
@@ -48,21 +59,21 @@
         <show_update>true</show_update>
         <sys_class_name>sys_ui_action</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
-        <sys_created_on>2017-06-26 20:33:54</sys_created_on>
+        <sys_created_on>2017-08-16 18:54:58</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
-        <sys_id>4beecf564fa33240f5f3d49f0310c729</sys_id>
-        <sys_mod_count>14</sys_mod_count>
-        <sys_name>Create Criterion</sys_name>
+        <sys_id>3291a9324fa80f00af76d0af0310c796</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Create Criterion 2</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
-        <sys_update_name>sys_ui_action_4beecf564fa33240f5f3d49f0310c729</sys_update_name>
+        <sys_update_name>sys_ui_action_3291a9324fa80f00af76d0af0310c796</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-08-16 18:38:39</sys_updated_on>
+        <sys_updated_on>2017-08-16 19:00:10</sys_updated_on>
         <table>x_inthe_eval_use_case</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

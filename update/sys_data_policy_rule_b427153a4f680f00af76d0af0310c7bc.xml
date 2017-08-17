@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_data_policy_rule">
+    <sys_data_policy_rule action="INSERT_OR_UPDATE">
+        <disabled>true</disabled>
+        <field>administrator</field>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_data_policy_rule</sys_class_name>
+        <sys_created_by>awyoung</sys_created_by>
+        <sys_created_on>2017-08-16 18:09:22</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_data_policy display_value="SET Evaluation - Read only when complete">86eeebe64f2f3240f5f3d49f0310c7c3</sys_data_policy>
+        <sys_id>b427153a4f680f00af76d0af0310c7bc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>administrator</sys_name>
+        <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
+        <sys_update_name>sys_data_policy_rule_b427153a4f680f00af76d0af0310c7bc</sys_update_name>
+        <sys_updated_by>awyoung</sys_updated_by>
+        <sys_updated_on>2017-08-16 18:09:22</sys_updated_on>
+        <table>x_inthe_eval_evaluation</table>
+    </sys_data_policy_rule>
+</record_update>

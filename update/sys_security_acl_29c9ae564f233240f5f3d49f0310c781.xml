@@ -8,22 +8,28 @@
         <description>Allow create for records in x_inthe_eval_focus_area, for users with role x_inthe_eval.user, and if the ACL script returns true.</description>
         <name>x_inthe_eval_focus_area</name>
         <operation display_value="create">create</operation>
-        <script><![CDATA[var user = gs.getUser();
-if(user.hasRole('x_inthe_eval.admin') == true || user.hasRole('x_inthe_eval.eval_admin') == true || user.hasRole('x_inthe_eval.uc_leader') == true ){
-	var answer = true;
+        <script><![CDATA[var user = gs.getUserID();
+var answer = false;
+if(parent.administrator == user){
+	answer = true;
 }
-if (parent.additional_evaluators.contains(gs.getUserID())){
-	var answer = true;
+if(parent.additional_evaluators.contains(user)){
+	answer = true;
+}
+if(parent.architect == user){
+	answer = true;
+}
+if(parent.solutions_manager == user){
+	answer = true;
 }
 else{
-	var answer = false;
 }]]></script>
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
         <sys_created_on>2017-06-26 17:50:32</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>29c9ae564f233240f5f3d49f0310c781</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>18</sys_mod_count>
         <sys_name>x_inthe_eval_focus_area</sys_name>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
@@ -31,7 +37,7 @@ else{
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_security_acl_29c9ae564f233240f5f3d49f0310c781</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-08-10 20:31:53</sys_updated_on>
+        <sys_updated_on>2017-08-17 00:49:56</sys_updated_on>
         <type display_value="record">record</type>
     </sys_security_acl>
 </record_update>

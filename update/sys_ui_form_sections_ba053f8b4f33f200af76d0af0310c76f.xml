@@ -15,6 +15,20 @@
             <sys_updated_by>awyoung</sys_updated_by>
             <sys_updated_on>2017-07-11 17:31:05</sys_updated_on>
         </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>1</position>
+            <sys_created_by>awyoung</sys_created_by>
+            <sys_created_on>2017-08-16 18:05:10</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>5536d9f64f680f00af76d0af0310c7ad</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_inthe_eval_evaluation" name="x_inthe_eval_evaluation" sys_domain="global" view="Default view">ba053f8b4f33f200af76d0af0310c76f</sys_ui_form>
+            <sys_ui_section caption="Evaluators List" display_value="Evaluators List" name="x_inthe_eval_evaluation" sys_domain="global" view="Default view">1136d9f64f680f00af76d0af0310c7ad</sys_ui_section>
+            <sys_updated_by>awyoung</sys_updated_by>
+            <sys_updated_on>2017-08-16 18:05:10</sys_updated_on>
+        </sys_ui_form_section>
         <sys_ui_form action="INSERT_OR_UPDATE">
             <name>x_inthe_eval_evaluation</name>
             <roles/>
