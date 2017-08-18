@@ -2,8 +2,8 @@
 <record_update sys_domain="global" table="sys_ui_action">
     <sys_ui_action action="INSERT_OR_UPDATE">
         <action_name/>
-        <active>true</active>
-        <client>false</client>
+        <active>false</active>
+        <client>true</client>
         <comments>Checks all child use cases for state = final&#13;
 Marks child solutions as final&#13;
 Updates state to final</comments>
@@ -20,15 +20,22 @@ Updates state to final</comments>
         <list_context_menu>false</list_context_menu>
         <list_link>false</list_link>
         <list_save_with_form_button>false</list_save_with_form_button>
-        <name>Finalize Evaluation</name>
-        <onclick/>
+        <name>\\ Finalize Evaluation OLD</name>
+        <onclick>finalize()</onclick>
         <order>100</order>
-        <script><![CDATA[//Validate child use cases are marked as final
+        <script><![CDATA[function finalize(){
+//Validate child use cases are marked as final
 var ucStateArray = [];
 var grUC = new GlideRecord('x_inthe_eval_use_case');
-grUC.addQuery('evaluation',current.sys_id);
+//grUC.addQuery('evaluation',current.sys_id);
 grUC.query();
+g_form.addInfoMessage("Use Case Count is: "+grUC.getRowCount());
 var ucCount = grUC.getRowCount();
+}
+/*
+if(ucCount<1){
+	g_form.addErrorMessage("There are no use cases for this evaluation. Please create use cases before finalizing.");
+}
 while (grUC.next()) { 
 	ucStateArray.push(grUC.state+'');}
 var ucStates = ucStateArray.toString();
@@ -52,61 +59,19 @@ else if (notFinal == false|| ucCount > 0){
 	grSol.updateMultiple();
 	gs.addInfoMessage("Criteria, Use Cases, and Solutions are finalized and ready for you to generate Score Cards.");
 
-/*	//Combine evaluators lists
-	var UCEvaluators = [];
-	var evalEvaluators = current.additional_evaluators.split(",");
-	var allEvaluators = evalEvaluators;
-
-	//get users from child use case records and add to array if not duplicate
-	var grEvalUC = new GlideRecord('x_inthe_eval_use_case');
-	grEvalUC.addQuery('evaluation', current.sys_id);
-	grEvalUC.query();
-	while (grEvalUC.next()){
-		var evalUsers = grEvalUC.evaluators.split(",");
-		for (h=0;h<evalUsers.length;h++){
-			var ucDupe = [];
-			for (i=0;i<allEvaluators.length;i++){
-				//gs.addInfoMessage(evalUsers[h] + " compared to " + allEvaluators[i]);
-				if (evalUsers[h] != allEvaluators[i]){
-					var duplicate = false;
-					//gs.addInfoMessage("Duplicate: "+duplicate);
-					ucDupe.push(duplicate+'');
-					}
-				if (evalUsers[h] == allEvaluators[i]){
-					var duplicate = true;
-					//gs.addInfoMessage("Duplicate: "+duplicate);
-					ucDupe.push(duplicate+'');
-				}
-			//gs.addInfoMessage("Dupes list is: " +ucDupe);
-			}
-			var ucDupeString = ucDupe.toString();
-			if (ucDupeString.contains(true)){
-				//gs.addInfoMessage('Duplicate user skipped');
-			}
-			else {
-				//gs.addInfoMessage('Unique user added: ' + evalUsers[h]);
-				allEvaluators.push(evalUsers[h]);
-				}
-		}
-	}
-
-	//set evaluators field to all evaluators
-	var gr = new GlideRecord('x_inthe_eval_evaluation');
-			gr.addQuery('sys_id', current.sys_id);
-			gr.query();
-			gr.setValue('evaluators', allEvaluators.toString());
-			gr.updateMultiple();
-	//gs.addInfoMessage('All users list is: ' +allEvaluators.toString());
-*/		
+	
 	//Mark current evaluation as Final
 	var grCurrent = new GlideRecord('x_inthe_eval_evaluation');
 	grCurrent.addQuery('sys_id',current.sys_id);
 	grCurrent.query();
 	grCurrent.setValue('state','final');
 	grCurrent.updateMultiple();	
-	}
+	*/
+/*	}
 }
-action.setRedirectURL(current);]]></script>
+action.setRedirectURL(current);
+action.setReturnURL(current);
+*/]]></script>
         <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
@@ -118,8 +83,8 @@ action.setRedirectURL(current);]]></script>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>d6384cba4f6f3240f5f3d49f0310c7d1</sys_id>
-        <sys_mod_count>21</sys_mod_count>
-        <sys_name>Finalize Evaluation</sys_name>
+        <sys_mod_count>29</sys_mod_count>
+        <sys_name>\\ Finalize Evaluation OLD</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
@@ -127,7 +92,7 @@ action.setRedirectURL(current);]]></script>
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_ui_action_d6384cba4f6f3240f5f3d49f0310c7d1</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-08-08 20:31:20</sys_updated_on>
+        <sys_updated_on>2017-08-18 16:50:33</sys_updated_on>
         <table>x_inthe_eval_evaluation</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

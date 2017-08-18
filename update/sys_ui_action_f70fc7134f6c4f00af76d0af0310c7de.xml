@@ -5,7 +5,7 @@
         <active>true</active>
         <client>false</client>
         <comments/>
-        <condition>current.state=='final'</condition>
+        <condition>current.state=='in_progress'</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
         <form_context_menu>false</form_context_menu>
@@ -18,24 +18,55 @@
         <list_context_menu>false</list_context_menu>
         <list_link>false</list_link>
         <list_save_with_form_button>false</list_save_with_form_button>
-        <name>Generate Score Cards</name>
-        <onclick/>
+        <name>Finalize Evaluation</name>
+        <onclick>finalize()</onclick>
         <order>100</order>
-        <script><![CDATA[//Validate child use cases are marked as final
+        <script><![CDATA[//Perform checks on children and update states lines 1-50
+//Combine evaluators on lines 51+
+
 var ucStateArray = [];
-var grUse = new GlideRecord('x_inthe_eval_use_case');
-grUse.addQuery('evaluation',current.sys_id);
-grUse.query();
-while (grUse.next()) { 
-	ucStateArray.push(grUse.state+'');}
-var useCaseStates = ucStateArray.toString();
-var notFinal = useCaseStates.includes("in_progress");
-if(notFinal == true){
-	gs.addErrorMessage("Please ensure all use cases are marked as Final before continuing.");
-}
-else if (notFinal == false){
-	
-	// combine and deduplicate evaluators and push to combined evaluators list
+
+//Check that at least 1 use case exists
+	var grUC = new GlideRecord('x_inthe_eval_use_case');
+	grUC.addQuery('evaluation',current.sys_id);
+	grUC.query();
+	var ucCount = grUC.getRowCount();
+	//gs.addInfoMessage("Use Case Count is: "+ucCount);
+	if(ucCount == 0){
+		gs.addErrorMessage("Please create a use case before finalizing.");
+		action.setRedirectURL('x_inthe_eval_evaluation.do?sys_id='+current.sys_id);
+	}
+	else if(ucCount>0){
+		//gs.addInfoMessage("You can continue.");
+		while (grUC.next()) { 
+			ucStateArray.push(grUC.state+'');
+		}
+		var ucStates = ucStateArray.toString();
+		//gs.addInfoMessage("UC state array: " +ucStates);
+		if(ucStates.contains("new")||ucStates.contains("in_progress")){
+			gs.addErrorMessage("Use Cases have not been marked as Final. Please review and finalize each Use Case and Criteria before finalizing the Evaluation.");
+			action.setRedirectURL('x_inthe_eval_evaluation.do?sys_id='+current.sys_id);
+		}
+		else if (ucStates.contains("final")){
+			
+			//Mark child Solutions as Final
+			var grSol = new GlideRecord('x_inthe_eval_solution');
+			grSol.addQuery('evaluation', current.sys_id);
+			grSol.query();
+			var solCount = grSol.getRowCount();
+			if (solCount == 0){
+				gs.addErrorMessage("There are no Solutions created for this Evaluation. Please create a solution before continuing.");
+				action.setRedirectURL('x_inthe_eval_evaluation.do?sys_id='+current.sys_id);
+			}
+			else if (ucCount > 0){
+				grSol.setValue('state', 'final');
+				grSol.updateMultiple();
+				gs.addInfoMessage("Criteria, Use Cases, and Solutions are finalized and ready for Generating Score Cards.");
+			}
+		}
+	}
+
+// combine and deduplicate evaluators and push to combined evaluators list
 var allEvaluators = [];
 var addEvaluators = [];
 var UCLeaders = [];
@@ -159,162 +190,31 @@ else if (grSol.getRowCount()==0){
 //gs.addInfoMessage("Use Case Evaluators count is: "+UCEval.length);
 //gs.addInfoMessage("Solutions PC count is: "+solPC.length);
 current.evaluators = allEvaluators.toString();
+current.state = 'final';
 current.update();
-var evaluators = allEvaluators;
-
-	//Mark child solutions as Complete
-	var grSolutions = new GlideRecord('x_inthe_eval_solution');
-	grSolutions.addQuery('evaluation', current.sys_id);
-	grSolutions.query();
-	grSolutions.setValue('state',  'complete');
-	grSolutions.updateMultiple();
-	//gs.addInfoMessage('Child solutions updated.');
-
-	//Mark child Use Cases as Scoring
-	var grUseCase = new GlideRecord('x_inthe_eval_use_case');
-	grUseCase.addQuery('evaluation', current.sys_id);
-	grUseCase.query();
-	grUseCase.setValue('state',  'scoring');
-	grUseCase.updateMultiple();
-	//gs.addInfoMessage('Child Use Cases updated.');
-
-	//Mark child Criteria as Scoring
-	var grCriteria = new GlideRecord('x_inthe_eval_criterion');
-	grCriteria.addQuery('evaluation', current.sys_id);
-	grCriteria.query();
-	grCriteria.setValue('state',  'scoring');
-	grCriteria.updateMultiple();
-	//gs.addInfoMessage('Child Criteria updated.');
-
-	//Mark current record as Scoring
-	var grCurrent = new GlideRecord('x_inthe_eval_evaluation');
-	grCurrent.addQuery('sys_id',current.sys_id);
-	grCurrent.query();
-	grCurrent.setValue('state','scoring');
-	grCurrent.updateMultiple();
-	//gs.addInfoMessage('Evaluation finalized.');
-
-	//Get solutions and put in array
-	var solutionsArray = [];
-	var solutions = new GlideRecord('x_inthe_eval_solution');
-	solutions.addQuery('evaluation',current.sys_id);
-	solutions.query();
-	//gs.addInfoMessage('Solutions Row Count is: ' + solutions.getRowCount());
-	while (solutions.next()) { 
-		solutionsArray.push(solutions.sys_id + '');
-	}
-	//gs.addInfoMessage('Solutions Array is ' + solutionsArray);
-
-
-	//Get criteria and put in array
-	var criteriaArray = [];
-	var criteria = new GlideRecord('x_inthe_eval_criterion');
-	criteria.addQuery('evaluation',current.sys_id);
-	criteria.query();
-	while (criteria.next()) { 
-		criteriaArray.push(criteria.sys_id + '');
-	}
-	//gs.addInfoMessage('Criteria Array is ' + criteriaArray);
-
-
-	//Create new array and solLength variables
-	var scoreCards = [];
-	var solLength = solutionsArray.length;
-	//gs.addInfoMessage('solLength is ' + solLength);
-	//gs.addInfoMessage('Evaluators length is ' + evaluators.length);
-
-	//Create score cards
-	for (l=0; l < evaluators.length; l++){
-		var a=0;
-		while (a < solLength){
-			var grScore = new GlideRecord("x_inthe_eval_score_card");
-			grScore.initialize();
-			grScore.evaluator = evaluators[l];
-			grScore.evaluation = current.sys_id;
-			grScore.solution = solutionsArray[a];
-			grScore.state = 'in_progress';
-			var newScoreCard = grScore.insert();
-			scoreCards.push(grScore.sys_id);
-			a++;
-		}
-	} 
-	//gs.addInfoMessage('Score Cards are ' + scoreCards);
-
-
-	//Create ratings records from score cards
-	var rating = [];
-	try{
-
-		//Create ratings for each score card
-		for(j=0,k=0; j<scoreCards.length;j++,k++){
-
-			// Get criteria length
-			var criLength = criteriaArray.length;
-
-			//Lookup evaluator from Score Card
-			var scEvaluator = '';
-			var grEvaluator = new GlideRecord("x_inthe_eval_score_card");
-			grEvaluator.addQuery('sys_id',scoreCards[j]);
-			grEvaluator.query();
-			//gs.addInfoMessage('Row Count is: ' + grEvaluator.getRowCount());
-			while (grEvaluator.next()) { 
-				scEvaluator = grEvaluator.evaluator;
-				//gs.addInfoMessage("Evaluator is " + scEvaluator);
-			}
-
-			//Lookup solution from score card
-			var scSolution = '';
-			var grSolution = new GlideRecord("x_inthe_eval_score_card");
-			grSolution.addQuery('sys_id',scoreCards[j]);
-			grSolution.query();
-			while (grSolution.next()) { 
-				scSolution = grSolution.solution;
-				//gs.addInfoMessage("Solution is " + scSolution);
-			}
-
-			//For each criteria create a rating record for each user and solution
-			for (k=0; k<criLength; k++){
-				var grRating = new GlideRecord("x_inthe_eval_rating");
-				grRating.initialize();
-				grRating.score_card = scoreCards[j];
-				grRating.criterion = criteriaArray[k];
-				grRating.evaluator = scEvaluator;
-				grRating.solution = scSolution;
-				var newRating = grRating.insert();
-				var ratingsArray = [];
-				ratingsArray.push(grRating.sys_id);
-				//gs.addInfoMessage("Ratings added: " + ratingsArray);
-			}
-		}
-	}	catch(e) {
-		gs.addErrorMessage("Error in UI Action 'grRatings' on line #{0}: {1}",e.lineNumber,e.message);
-		gs.error("Error in UI Action 'grRatings' on line #{0}: {1}",e.lineNumber,e.message);
-	}
-			//closes  if statement from the beginning
-	}
-action.setReturnURL(current);
-action.setRedirectURL(current);]]></script>
+action.setRedirectURL('x_inthe_eval_evaluation.do?sys_id='+current.sys_id);
+action.setReturnURL(current);]]></script>
         <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
         <show_update>true</show_update>
         <sys_class_name>sys_ui_action</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
-        <sys_created_on>2017-07-10 22:29:16</sys_created_on>
+        <sys_created_on>2017-08-18 16:11:02</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
-        <sys_id>c9df63324fffb200f5f3d49f0310c731</sys_id>
-        <sys_mod_count>72</sys_mod_count>
-        <sys_name>Generate Score Cards</sys_name>
+        <sys_id>f70fc7134f6c4f00af76d0af0310c7de</sys_id>
+        <sys_mod_count>23</sys_mod_count>
+        <sys_name>Finalize Evaluation</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
-        <sys_update_name>sys_ui_action_c9df63324fffb200f5f3d49f0310c731</sys_update_name>
+        <sys_update_name>sys_ui_action_f70fc7134f6c4f00af76d0af0310c7de</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-08-18 20:05:18</sys_updated_on>
+        <sys_updated_on>2017-08-18 20:12:59</sys_updated_on>
         <table>x_inthe_eval_evaluation</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

@@ -21,53 +21,134 @@
         <name>\\ Combine Evaluators</name>
         <onclick/>
         <order>100</order>
-        <script><![CDATA[var UCEvaluators = [];
-var evalEvaluators = current.additional_evaluators.split(",");
-var allEvaluators = evalEvaluators;
+        <script><![CDATA[// combine and deduplicate evaluators and push to combined evaluators list
+var allEvaluators = [];
+var addEvaluators = [];
+var UCLeaders = [];
+var UCEval = [];
+var solPC = [];
 
-//get users from child use case records and add to array if not duplicate
-var grEvalUC = new GlideRecord('x_inthe_eval_use_case');
-grEvalUC.addQuery('evaluation', current.sys_id);
-grEvalUC.query();
-while (grEvalUC.next()){
-	var evalUsers = grEvalUC.evaluators.split(",");
-	for (h=0;h<evalUsers.length;h++){
-		var ucDupe = [];
-		for (i=0;i<allEvaluators.length;i++){
-			//gs.addInfoMessage(evalUsers[h] + " compared to " + allEvaluators[i]);
-			if (evalUsers[h] != allEvaluators[i]){
-				var duplicate = false;
-				//gs.addInfoMessage("Duplicate: "+duplicate);
-				ucDupe.push(duplicate+'');
-				}
-			if (evalUsers[h] == allEvaluators[i]){
-				var duplicate = true;
-				//gs.addInfoMessage("Duplicate: "+duplicate);
-				ucDupe.push(duplicate+'');
+//add users from current record
+if(current.administrator != ''){
+	allEvaluators.push(current.administrator.sys_id);
+}
+if(current.architect != '' && current.architect != current.administrator){
+	allEvaluators.push(current.architect.sys_id);
+}
+if(current.solutions_manager != ''&& current.solutions_manager != current.administrator&& current.solutions_manager != current.architect){
+	allEvaluators.push(current.solutions_manager);
+}
+if(current.additional_evaluators != ''){
+	var duplicate = '';
+	addEvaluators = current.additional_evaluators.split(",");
+	//gs.addInfoMessage("First current add'l evaluator is: "+ addEvaluators[0]);
+	for(a=0;a<addEvaluators.length;a++){
+		for(i=0;i<allEvaluators.length;i++){
+			if(addEvaluators[a]==allEvaluators[i]){
+				duplicate = true;
 			}
-		//gs.addInfoMessage("Dupes list is: " +ucDupe);
 		}
-		var ucDupeString = ucDupe.toString();
-		if (ucDupeString.contains(true)){
-			//gs.addInfoMessage('Duplicate user skipped');
+		if(duplicate != true){
+			allEvaluators.push(addEvaluators[a]+'');
 		}
-		else {
-			//gs.addInfoMessage('Unique user added: ' + evalUsers[h]);
-			allEvaluators.push(evalUsers[h]);
-			}
 	}
 }
+//gs.addInfoMessage("Unique users from current record are: "+allEvaluators.toString());
 
-//set evaluators field to all evaluators
-var gr = new GlideRecord('x_inthe_eval_evaluation');
-		gr.addQuery('sys_id', current.sys_id);
-		gr.query();
-		gr.setValue('evaluators', allEvaluators.toString());
-		gr.updateMultiple();
+//lookup use case users, check for duplicates, add to array
+var grUC = new GlideRecord('x_inthe_eval_use_case');
+grUC.addQuery('evaluation',current.sys_id);
+grUC.query();
+if(grUC.getRowCount()==0){
+	gs.addErrorMessage("No use cases found. Please create a use case before continuing.");
+	action.setRedirectURL('x_inthe_eval_evaluation.do?sys_id='+current.sys_id);
+}
+else if(grUC.getRowCount()>0){
+	//gs.addInfoMessage("Use case is found. Calculating users.");
+	while(grUC.next()){
+		if(grUC.use_case_leader != ''){
+			//gs.addInfoMessage("UC leader is: "+grUC.use_case_leader);
+			UCLeaders.push(grUC.use_case_leader+'');
+		}
+		if(grUC.evaluators != ''){
+			//gs.addInfoMessage("UC evals are: "+grUC.evaluators);
+			var useCaseEvals = [];
+			useCaseEvals = grUC.evaluators.split(",");
+			for(k=0;k<useCaseEvals.length;k++){
+				UCEval.push(useCaseEvals[k]);
+			}
+		}
+	}
+	//gs.addInfoMessage("Use Case Leaders are: "+UCLeaders.length);
+	//gs.addInfoMessage("Use Case Evaluators are: "+UCEval.length);
+	for(b=0;b<UCLeaders.length;b++){
+		var duplicate = '';
+		for(i=0;i<allEvaluators.length;i++){
+			if(UCLeaders[b] == allEvaluators[i]){
+				duplicate = true;
+			}
+		}
+		//gs.addInfoMessage("Duplicate is: "+duplicate);
+		if(duplicate != true){
+			allEvaluators.push(UCLeaders[b]);
+		}
+	}
+	if(UCEval.length>0){
+		//gs.addInfoMessage("Use Case evaluators not blank.");
+		for(c=0;c<UCEval.length;c++){
+			var duplicate = '';
+			for(i=0;i<allEvaluators.length;i++){
+				//gs.addInfoMessage(UCEval[c]+" compared to "+allEvaluators[i]);
+				if(UCEval[c] == allEvaluators[i]){
+					duplicate = true;
+				}
+			}
+			if(duplicate != true){
+				//gs.addInfoMessage("User added to list.");
+				allEvaluators.push(UCEval[c]+'');
+			}
+		}
+	}
+}
+//gs.addInfoMessage("Users after Use Case: " +allEvaluators.length);
 
-//gs.addInfoMessage('All users list is: ' +allEvaluators.toString());
-setRedirectURL(current);]]></script>
-        <show_insert>true</show_insert>
+//lookup solutions primary contacts and add to all users array if not duplicate
+var grSol = new GlideRecord('x_inthe_eval_solution');
+grSol.addQuery('evaluation',current.sys_id);
+grSol.query();
+//gs.addInfoMessage("Solutions count is: "+grSol.getRowCount());
+if(grSol.getRowCount()>0){
+	while(grSol.next()){
+		if(grSol.primary_contact !=''){
+			solPC.push(grSol.primary_contact.sys_id);
+		}
+	}
+	for(d=0;d<solPC.length;d++){
+		var duplicate = '';
+		for(i=0;i<allEvaluators.length;i++){
+			if(solPC[d]==allEvaluators[i]){
+				duplicate = true;
+			}
+		}
+		if(duplicate !=true){
+			allEvaluators.push(solPC[d]);
+		}
+	}
+}
+else if (grSol.getRowCount()==0){
+	gs.addErrorMessage("No Solutions have been created. Please create a solution before continuing.");
+}
+
+//gs.addInfoMessage("Total unique evaluators count is: "+allEvaluators.length);
+//gs.addInfoMessage("Additional count is: "+addEvaluators.length);
+//gs.addInfoMessage("Use Case Leaders count is: "+UCLeaders.length);
+//gs.addInfoMessage("Use Case Evaluators count is: "+UCEval.length);
+//gs.addInfoMessage("Solutions PC count is: "+solPC.length);
+current.evaluators = allEvaluators.toString();
+current.update();
+action.setReturnURL(current);
+action.setRedirectURL(current);]]></script>
+        <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
         <show_update>true</show_update>
@@ -78,7 +159,7 @@ setRedirectURL(current);]]></script>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>b53e3aae4f544700af76d0af0310c753</sys_id>
-        <sys_mod_count>47</sys_mod_count>
+        <sys_mod_count>94</sys_mod_count>
         <sys_name>\\ Combine Evaluators</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -87,7 +168,7 @@ setRedirectURL(current);]]></script>
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_ui_action_b53e3aae4f544700af76d0af0310c753</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-08-10 18:29:02</sys_updated_on>
+        <sys_updated_on>2017-08-18 20:01:42</sys_updated_on>
         <table>x_inthe_eval_evaluation</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

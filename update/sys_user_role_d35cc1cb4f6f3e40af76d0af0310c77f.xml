@@ -4,7 +4,7 @@
         <assignable_by/>
         <can_delegate>true</can_delegate>
         <description>Application administrator has access to all fields and capabilities</description>
-        <elevated_privilege>true</elevated_privilege>
+        <elevated_privilege>false</elevated_privilege>
         <encryption_context/>
         <grantable>true</grantable>
         <includes_roles/>
@@ -15,7 +15,7 @@
         <sys_created_on>2017-06-28 18:58:30</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>d35cc1cb4f6f3e40af76d0af0310c77f</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>x_inthe_eval.admin</sys_name>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
@@ -23,6 +23,6 @@
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_user_role_d35cc1cb4f6f3e40af76d0af0310c77f</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-08-16 17:13:48</sys_updated_on>
+        <sys_updated_on>2017-08-17 20:06:07</sys_updated_on>
     </sys_user_role>
 </record_update>
