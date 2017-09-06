@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
-    <element label="Evaluation" max_length="40" name="x_inthe_eval_evaluation" type="collection">
+    <element audit="true" label="Evaluation" max_length="40" name="x_inthe_eval_evaluation" type="collection">
         <element label="Additional Evaluators" max_length="4000" name="additional_evaluators" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="glide_list"/>
         <element label="Administrator" mandatory="true" max_length="32" name="administrator" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
         <element label="Architect" max_length="32" name="architect" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>

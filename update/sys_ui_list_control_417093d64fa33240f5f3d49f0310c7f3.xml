@@ -26,7 +26,7 @@
         <omit_filters>false</omit_filters>
         <omit_if_empty>false</omit_if_empty>
         <omit_links>false</omit_links>
-        <omit_new_button>false</omit_new_button>
+        <omit_new_button>true</omit_new_button>
         <related_list>x_inthe_eval_rating.score_card</related_list>
         <search_method>keywords</search_method>
         <sys_class_name>sys_ui_list_control</sys_class_name>
@@ -36,7 +36,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>417093d64fa33240f5f3d49f0310c7f3</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>x_inthe_eval_score_card</sys_name>
         <sys_overrides display_value="">global</sys_overrides>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -45,6 +45,6 @@
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_ui_list_control_417093d64fa33240f5f3d49f0310c7f3</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-07-05 16:07:20</sys_updated_on>
+        <sys_updated_on>2017-08-21 19:40:39</sys_updated_on>
     </sys_ui_list_control>
 </record_update>

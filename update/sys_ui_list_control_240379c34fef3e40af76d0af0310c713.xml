@@ -31,7 +31,7 @@ else {
         <omit_columns_if_empty>false</omit_columns_if_empty>
         <omit_drilldown_link>false</omit_drilldown_link>
         <omit_edit_button>true</omit_edit_button>
-        <omit_filters>false</omit_filters>
+        <omit_filters>true</omit_filters>
         <omit_if_empty>false</omit_if_empty>
         <omit_links>false</omit_links>
         <omit_new_button>false</omit_new_button>
@@ -44,7 +44,7 @@ else {
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>240379c34fef3e40af76d0af0310c713</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>x_inthe_eval_evaluation</sys_name>
         <sys_overrides display_value="">global</sys_overrides>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -53,6 +53,6 @@ else {
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_ui_list_control_240379c34fef3e40af76d0af0310c713</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-08-16 23:39:08</sys_updated_on>
+        <sys_updated_on>2017-08-21 18:44:11</sys_updated_on>
     </sys_ui_list_control>
 </record_update>

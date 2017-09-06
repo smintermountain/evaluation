@@ -19,7 +19,7 @@
         <sys_updated_by>awyoung</sys_updated_by>
         <sys_updated_on>2017-08-16 17:56:43</sys_updated_on>
         <table>x_inthe_eval_use_case</table>
-        <ui_policy display_value="SET Use Case - UC Leader and Evals Reqd">6e1499764f680f00af76d0af0310c7b9</ui_policy>
+        <ui_policy display_value="SET Use Case - UC Leader Required">6e1499764f680f00af76d0af0310c7b9</ui_policy>
         <visible>ignore</visible>
     </sys_ui_policy_action>
 </record_update>

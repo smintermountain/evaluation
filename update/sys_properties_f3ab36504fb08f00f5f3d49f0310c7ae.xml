@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>Evaluation activity formatter fields</description>
+        <ignore_cache>false</ignore_cache>
+        <is_private>false</is_private>
+        <name>glide.ui.x_inthe_eval_evaluation_activity.fields</name>
+        <read_roles/>
+        <suffix/>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>awyoung</sys_created_by>
+        <sys_created_on>2017-08-21 17:19:26</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>f3ab36504fb08f00f5f3d49f0310c7ae</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>glide.ui.x_inthe_eval_evaluation_activity.fields</sys_name>
+        <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
+        <sys_update_name>sys_properties_f3ab36504fb08f00f5f3d49f0310c7ae</sys_update_name>
+        <sys_updated_by>awyoung</sys_updated_by>
+        <sys_updated_on>2017-08-31 18:24:23</sys_updated_on>
+        <type>string</type>
+        <value>name,administrator,architect,description,pmo_project,solutions_manager,state,*Relations*,evaluators,*Attachments*</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=f3ab36504fb08f00f5f3d49f0310c7ae"/>
+</record_update>
