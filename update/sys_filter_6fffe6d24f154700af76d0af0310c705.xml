@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update sys_domain="global" table="sys_filter">
     <sys_filter action="INSERT_OR_UPDATE">
-        <filter table="sys_user">nameSTARTSWITHirene hos^nameISNOTEMPTY^EQ<item endquery="false" field="name" goto="false" newquery="false" operator="STARTSWITH" or="false" value="irene hos"/>
+        <filter table="sys_user">nameSTARTSWITHjoe alv^nameISNOTEMPTY^EQ<item endquery="false" field="name" goto="false" newquery="false" operator="STARTSWITH" or="false" value="joe alv"/>
             <item endquery="false" field="name" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </filter>
         <group/>
-        <last_used>2017-08-21 18:04:15</last_used>
+        <last_used>2017-09-21 18:07:35</last_used>
         <mobile>true</mobile>
         <roles/>
         <sys_class_name>sys_filter</sys_class_name>
         <sys_created_by>awyoung</sys_created_by>
-        <sys_created_on>2017-08-21 18:04:15</sys_created_on>
+        <sys_created_on>2017-09-21 18:07:35</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
-        <sys_id>a8f507184fb4cf00af76d0af0310c7e9</sys_id>
+        <sys_id>6fffe6d24f154700af76d0af0310c705</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>mobile</sys_name>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
-        <sys_update_name>sys_filter_a8f507184fb4cf00af76d0af0310c7e9</sys_update_name>
+        <sys_update_name>sys_filter_6fffe6d24f154700af76d0af0310c705</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-08-21 18:04:15</sys_updated_on>
+        <sys_updated_on>2017-09-21 18:07:35</sys_updated_on>
         <table>sys_user</table>
         <title>mobile</title>
         <user display_value="Will Young">9e75f0474f784600af76d0af0310c7b5</user>

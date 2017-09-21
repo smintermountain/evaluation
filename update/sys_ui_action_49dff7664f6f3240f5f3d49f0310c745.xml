@@ -6,7 +6,7 @@
         <client>false</client>
         <comments>Checks all child criteria for completeness&#13;
 Updates child criteria state to final</comments>
-        <condition>(current.state == 'in_progress')&amp;&amp;(current.use_case_leader==gs.getUserID()||gs.hasRole('x_inthe_eval.admin'))</condition>
+        <condition>(current.state == 'in_progress')&amp;&amp;(current.use_case_leader==gs.getUserID()||gs.hasRole('x_inthe_eval.admin')||current.evaluation.administator==gs.getUserID())</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
         <form_context_menu>false</form_context_menu>
@@ -75,7 +75,7 @@ else{
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>49dff7664f6f3240f5f3d49f0310c745</sys_id>
-        <sys_mod_count>23</sys_mod_count>
+        <sys_mod_count>24</sys_mod_count>
         <sys_name>Finalize Use Case</sys_name>
         <sys_overrides/>
         <sys_package display_value="Solution Evaluation Tool" source="x_inthe_eval">a1a219604f27f640af76d0af0310c7c7</sys_package>
@@ -84,7 +84,7 @@ else{
         <sys_scope display_value="Solution Evaluation Tool">a1a219604f27f640af76d0af0310c7c7</sys_scope>
         <sys_update_name>sys_ui_action_49dff7664f6f3240f5f3d49f0310c745</sys_update_name>
         <sys_updated_by>awyoung</sys_updated_by>
-        <sys_updated_on>2017-08-21 19:32:11</sys_updated_on>
+        <sys_updated_on>2017-09-21 17:34:00</sys_updated_on>
         <table>x_inthe_eval_use_case</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>
